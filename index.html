@@ -4,12 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="QuickFinCalc - Fast Financial Calculators for India. Calculate EMI, FD, RD, Loan Amount, Tenure, or Interest Rate instantly.">
-  <meta name="keywords" content="EMI calculator, FD calculator, RD calculator, loan calculator India, quick financial calculator">
+  <meta name="description" content="QuickFinCalc - Premium Financial Calculators for India. Calculate EMI, FD, RD, Loan Amount, Tenure, or Interest Rate instantly.">
+  <meta name="keywords" content="EMI calculator, FD calculator, RD calculator, loan calculator India, quick financial calculator, fixed deposit calculator, recurring deposit calculator">
   <meta name="author" content="Your Name">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://quickfincalc.in/">
-  <title>QuickFinCalc - EMI, FD, and RD Calculators for India</title>
+  <title>QuickFinCalc - Premium EMI, FD, and RD Calculators for India</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Chart.js -->
@@ -17,60 +19,131 @@
   <!-- Custom CSS -->
   <style>
     body {
-      padding: 20px;
-      background-color: #f8f9fa;
-      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1A2526;
+      color: #F5F6F5;
+      font-family: 'Raleway', sans-serif;
+      line-height: 1.8;
+    }
+    .header {
+      background: linear-gradient(135deg, #1A2526 0%, #4A919E 100%);
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #F5F6F5;
+      margin-bottom: 10px;
+    }
+    .header p {
+      font-size: 1.1rem;
+      color: #D4AF37;
+      font-weight: 300;
     }
     .container {
-      max-width: 700px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      background: #F5F6F5;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+      margin: 40px auto;
+      animation: fadeIn 1s ease-in-out;
+      color: #1A2526;
     }
-    h1 {
-      font-size: 1.8rem;
-      color: #333;
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .nav-tabs {
+      border-bottom: 2px solid #D4AF37;
+      margin-bottom: 30px;
+    }
+    .nav-tabs .nav-link {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      color: #1A2526;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 10px 20px;
+      transition: all 0.3s ease;
+    }
+    .nav-tabs .nav-link:hover {
+      border-bottom: 2px solid #D4AF37;
+      color: #D4AF37;
+    }
+    .nav-tabs .nav-link.active {
+      border-bottom: 2px solid #D4AF37;
+      color: #D4AF37;
+      background: none;
+    }
+    .tab-content {
+      padding: 20px 0;
     }
     .form-label {
-      font-weight: bold;
-      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: #1A2526;
+      margin-bottom: 10px;
       display: block;
     }
-    #result {
-      margin-top: 20px;
-      font-size: 1.1rem;
-      color: #333;
+    #emiResult, #fdResult, #rdResult {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      color: #1A2526;
+      background: #E8ECEF;
+      padding: 15px;
+      border-radius: 10px;
     }
-    #amortizationChart {
-      margin-top: 20px;
+    #emiChart, #fdChart, #rdChart {
+      margin-top: 30px;
       max-width: 100%;
       display: none;
     }
     .ad-placeholder {
-      background: #e9ecef;
-      padding: 10px;
+      background: #E8ECEF;
+      padding: 15px;
       text-align: center;
-      margin: 20px 0;
-      border-radius: 5px;
+      margin: 30px 0;
+      border-radius: 10px;
+      color: #1A2526;
     }
     .affiliate-links, .guide-section {
-      margin-top: 20px;
-      padding: 15px;
-      background: #f1f3f5;
-      border-radius: 5px;
+      margin-top: 30px;
+      padding: 20px;
+      background: #E8ECEF;
+      border-radius: 10px;
+      color: #1A2526;
+    }
+    .affiliate-links h3, .guide-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #4A919E;
     }
     .buy-coffee {
-      margin-top: 20px;
+      margin-top: 30px;
       text-align: center;
     }
     footer {
-      margin-top: 30px;
+      margin: 40px 0;
       text-align: center;
-      color: #666;
+      color: #F5F6F5;
+      padding-top: 20px;
+      border-top: 1px solid #D4AF37;
+    }
+    footer a {
+      color: #D4AF37;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #F5F6F5;
     }
     .input-group {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       width: 100%;
     }
     .input-group .form-control {
@@ -79,58 +152,209 @@
       min-width: 300px;
       max-width: 100%;
       padding: 12px;
-      border-radius: 5px;
+      border-radius: 8px;
+      border: 1px solid #4A919E;
       box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
       box-sizing: border-box;
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .input-group .form-control:focus {
+      border-color: #D4AF37;
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+      outline: none;
+    }
+    .btn-primary, .btn-success, .btn-warning {
+      background: linear-gradient(135deg, #D4AF37 0%, #B89729 100%);
+      border: none;
+      color: #1A2526;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-primary:hover, .btn-success:hover, .btn-warning:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, #B89729 0%, #D4AF37 100%);
+    }
+    .form-select {
+      border-radius: 8px;
+      border: 1px solid #4A919E;
+      padding: 12px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .form-select:focus {
+      border-color: #D4AF37;
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+      outline: none;
+    }
+    a {
+      color: #4A919E;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #D4AF37;
     }
     @media (max-width: 576px) {
       .input-group .form-control {
         min-width: 100%;
       }
+      .header h1 {
+        font-size: 2rem;
+      }
+      .container {
+        padding: 20px;
+      }
+      .nav-tabs .nav-link {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Header -->
+  <div class="header">
+    <h1>QuickFinCalc</h1>
+    <p>Premium EMI, FD, and RD Calculators for India</p>
+  </div>
+
+  <!-- Main Container -->
   <div class="container">
-    <!-- Header -->
-    <h1>QuickFinCalc - Flexible EMI Calculator</h1>
-    <p>Calculate EMI, Loan Amount, Tenure, or Interest Rate instantly. FD and RD calculators coming soon!</p>
+    <!-- Introduction -->
+    <p>Calculate EMI, Fixed Deposit (FD), or Recurring Deposit (RD) with precision and ease.</p>
 
-    <!-- Selector for Output Variable -->
-    <div class="mb-3">
-      <label for="calcType" class="form-label">What do you want to calculate?</label>
-      <select id="calcType" class="form-select" onchange="updateInputs()">
-        <option value="emi">EMI (Monthly Payment)</option>
-        <option value="principal">Loan Amount</option>
-        <option value="tenure">Tenure (Months)</option>
-        <option value="rate">Annual Interest Rate (%)</option>
-      </select>
+    <!-- Tabs for Calculators -->
+    <ul class="nav nav-tabs" id="calcTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="emi-tab" data-bs-toggle="tab" data-bs-target="#emiCalc" type="button" role="tab" aria-controls="emiCalc" aria-selected="true">EMI Calculator</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="fd-tab" data-bs-toggle="tab" data-bs-target="#fdCalc" type="button" role="tab" aria-controls="fdCalc" aria-selected="false">FD Calculator</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="rd-tab" data-bs-toggle="tab" data-bs-target="#rdCalc" type="button" role="tab" aria-controls="rdCalc" aria-selected="false">RD Calculator</button>
+      </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="calcTabContent">
+      <!-- EMI Calculator -->
+      <div class="tab-pane fade show active" id="emiCalc" role="tabpanel" aria-labelledby="emi-tab">
+        <div class="mb-4">
+          <label for="emiCalcType" class="form-label">What would you like to calculate?</label>
+          <select id="emiCalcType" class="form-select" onchange="updateEmiInputs()">
+            <option value="emi">EMI (Monthly Payment)</option>
+            <option value="principal">Loan Amount</option>
+            <option value="tenure">Tenure (Months)</option>
+            <option value="rate">Annual Interest Rate (%)</option>
+          </select>
+        </div>
+        <form id="emiForm">
+          <div id="emiInput" class="input-group">
+            <label for="emi" class="form-label">EMI (₹):</label>
+            <input type="number" id="emi" class="form-control" placeholder="e.g., 5000" step="0.01" min="0">
+          </div>
+          <div id="emiPrincipalInput" class="input-group">
+            <label for="emiPrincipal" class="form-label">Loan Amount (₹):</label>
+            <input type="number" id="emiPrincipal" class="form-control" placeholder="e.g., 100000" min="0">
+          </div>
+          <div id="emiRateInput" class="input-group">
+            <label for="emiRate" class="form-label">Annual Interest Rate (%):</label>
+            <input type="number" id="emiRate" class="form-control" placeholder="e.g., 8.5" step="0.1" min="0">
+          </div>
+          <div id="emiTenureInput" class="input-group">
+            <label for="emiTenure" class="form-label">Tenure (Months):</label>
+            <input type="number" id="emiTenure" class="form-control" placeholder="e.g., 60" min="1">
+          </div>
+          <button type="button" onclick="calculateEmi()" class="btn btn-primary w-100">Calculate Now</button>
+        </form>
+        <div id="emiResult"></div>
+        <canvas id="emiChart" height="100"></canvas>
+      </div>
+
+      <!-- FD Calculator -->
+      <div class="tab-pane fade" id="fdCalc" role="tabpanel" aria-labelledby="fd-tab">
+        <div class="mb-4">
+          <label for="fdCalcType" class="form-label">What would you like to calculate?</label>
+          <select id="fdCalcType" class="form-select" onchange="updateFdInputs()">
+            <option value="maturity">Maturity Amount</option>
+            <option value="principal">Principal Amount</option>
+            <option value="tenure">Tenure (Years)</option>
+            <option value="rate">Annual Interest Rate (%)</option>
+          </select>
+        </div>
+        <form id="fdForm">
+          <div id="fdMaturityInput" class="input-group">
+            <label for="fdMaturity" class="form-label">Maturity Amount (₹):</label>
+            <input type="number" id="fdMaturity" class="form-control" placeholder="e.g., 136856" step="0.01" min="0">
+          </div>
+          <div id="fdPrincipalInput" class="input-group">
+            <label for="fdPrincipal" class="form-label">Principal Amount (₹):</label>
+            <input type="number" id="fdPrincipal" class="form-control" placeholder="e.g., 100000" min="0">
+          </div>
+          <div id="fdRateInput" class="input-group">
+            <label for="fdRate" class="form-label">Annual Interest Rate (%):</label>
+            <input type="number" id="fdRate" class="form-control" placeholder="e.g., 6.5" step="0.1" min="0">
+          </div>
+          <div id="fdTenureInput" class="input-group">
+            <label for="fdTenure" class="form-label">Tenure (Years):</label>
+            <input type="number" id="fdTenure" class="form-control" placeholder="e.g., 5" min="1">
+          </div>
+          <div id="fdCompoundInput" class="input-group">
+            <label for="fdCompound" class="form-label">Compounding Frequency:</label>
+            <select id="fdCompound" class="form-select">
+              <option value="4">Quarterly</option>
+              <option value="2">Half-Yearly</option>
+              <option value="1">Yearly</option>
+            </select>
+          </div>
+          <button type="button" onclick="calculateFd()" class="btn btn-primary w-100">Calculate Now</button>
+        </form>
+        <div id="fdResult"></div>
+        <canvas id="fdChart" height="100"></canvas>
+      </div>
+
+      <!-- RD Calculator -->
+      <div class="tab-pane fade" id="rdCalc" role="tabpanel" aria-labelledby="rd-tab">
+        <div class="mb-4">
+          <label for="rdCalcType" class="form-label">What would you like to calculate?</label>
+          <select id="rdCalcType" class="form-select" onchange="updateRdInputs()">
+            <option value="maturity">Maturity Amount</option>
+            <option value="monthly">Monthly Deposit</option>
+            <option value="tenure">Tenure (Months)</option>
+            <option value="rate">Annual Interest Rate (%)</option>
+          </select>
+        </div>
+        <form id="rdForm">
+          <div id="rdMaturityInput" class="input-group">
+            <label for="rdMaturity" class="form-label">Maturity Amount (₹):</label>
+            <input type="number" id="rdMaturity" class="form-control" placeholder="e.g., 348500" step="0.01" min="0">
+          </div>
+          <div id="rdMonthlyInput" class="input-group">
+            <label for="rdMonthly" class="form-label">Monthly Deposit (₹):</label>
+            <input type="number" id="rdMonthly" class="form-control" placeholder="e.g., 5000" min="0">
+          </div>
+          <div id="rdRateInput" class="input-group">
+            <label for="rdRate" class="form-label">Annual Interest Rate (%):</label>
+            <input type="number" id="rdRate" class="form-control" placeholder="e.g., 6.5" step="0.1" min="0">
+          </div>
+          <div id="rdTenureInput" class="input-group">
+            <label for="rdTenure" class="form-label">Tenure (Months):</label>
+            <input type="number" id="rdTenure" class="form-control" placeholder="e.g., 60" min="1">
+          </div>
+          <button type="button" onclick="calculateRd()" class="btn btn-primary w-100">Calculate Now</button>
+        </form>
+        <div id="rdResult"></div>
+        <canvas id="rdChart" height="100"></canvas>
+      </div>
     </div>
-
-    <!-- Input Form -->
-    <form id="emiForm">
-      <div id="emiInput" class="input-group">
-        <label for="emi" class="form-label">EMI (₹):</label>
-        <input type="number" id="emi" class="form-control" placeholder="e.g., 5000" step="0.01" min="0">
-      </div>
-      <div id="principalInput" class="input-group">
-        <label for="principal" class="form-label">Loan Amount (₹):</label>
-        <input type="number" id="principal" class="form-control" placeholder="e.g., 100000" min="0">
-      </div>
-      <div id="rateInput" class="input-group">
-        <label for="rate" class="form-label">Annual Interest Rate (%):</label>
-        <input type="number" id="rate" class="form-control" placeholder="e.g., 8.5" step="0.1" min="0">
-      </div>
-      <div id="tenureInput" class="input-group">
-        <label for="tenure" class="form-label">Tenure (Months):</label>
-        <input type="number" id="tenure" class="form-control" placeholder="e.g., 60" min="1">
-      </div>
-      <button type="button" onclick="calculate()" class="btn btn-primary w-100">Calculate</button>
-    </form>
-
-    <!-- Results -->
-    <div id="result"></div>
-    <canvas id="amortizationChart" height="100"></canvas>
 
     <!-- AdSense Placeholder -->
     <div class="ad-placeholder">
@@ -140,11 +364,12 @@
 
     <!-- Affiliate Links -->
     <div class="affiliate-links">
-      <h3>Explore Loan Options</h3>
-      <p>Check out the best personal loans in India:</p>
+      <h3>Explore Financial Products</h3>
+      <p>Discover the best financial products in India:</p>
       <ul>
         <li><a href="https://your-affiliate-link.com" target="_blank" rel="nofollow">HDFC Bank Personal Loans</a></li>
-        <li><a href="https://your-affiliate-link.com" target="_blank" rel="nofollow">SBI Personal Loans</a></li>
+        <li><a href="https://your-affiliate-link.com" target="_blank" rel="nofollow">SBI Fixed Deposits</a></li>
+        <li><a href="https://your-affiliate-link.com" target="_blank" rel="nofollow">Post Office Recurring Deposits</a></li>
         <!-- Replace with actual affiliate links (e.g., CJ Affiliate, Amazon Associates) -->
       </ul>
       <p><small>Affiliate links help support this free tool.</small></p>
@@ -165,21 +390,24 @@
 
     <!-- Guide Content for SEO/AdSense -->
     <div class="guide-section">
-      <h3>How to Use This Flexible EMI Calculator</h3>
-      <p>This tool calculates any loan variable (EMI, Loan Amount, Tenure, or Interest Rate) based on the other three inputs. For example:</p>
+      <h3>How to Use QuickFinCalc</h3>
+      <p>QuickFinCalc offers flexible tools to plan your finances with precision:</p>
       <ul>
-        <li><strong>EMI</strong>: Know your monthly payment for a given loan amount, rate, and tenure.</li>
-        <li><strong>Loan Amount</strong>: Find how much you can borrow based on your EMI, rate, and tenure.</li>
-        <li><strong>Tenure</strong>: Calculate how long it takes to repay based on EMI, loan amount, and rate.</li>
-        <li><strong>Interest Rate</strong>: Determine the rate based on EMI, loan amount, and tenure.</li>
+        <li><strong>EMI Calculator</strong>: Calculate your monthly loan payments, loan amount, tenure, or interest rate.</li>
+        <li><strong>FD Calculator</strong>: Estimate the maturity amount, principal, tenure, or interest rate for your fixed deposits.</li>
+        <li><strong>RD Calculator</strong>: Plan your recurring deposits by calculating the maturity amount, monthly deposit, tenure, or interest rate.</li>
       </ul>
-      <p>Use this to compare loans, plan budgets, or negotiate terms. Always verify with your lender.</p>
+      <p>Use these tools to compare financial products, plan budgets, or negotiate terms. Always verify with your provider.</p>
     </div>
   </div>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 QuickFinCalc - Fast Financial Calculators for India. For informational purposes only.</p>
+    <p>© 2025 QuickFinCalc - Premium Financial Calculators for India. For informational purposes only.</p>
+    <p>
+      <a href="https://twitter.com/yourusername" target="_blank">Twitter</a> |
+      <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+    </p>
   </footer>
 
   <!-- Bootstrap JS -->
@@ -188,101 +416,93 @@
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <!-- Calculator Logic -->
   <script>
-    // Clear results
-    function clearResults() {
-      document.getElementById('result').innerHTML = '';
-      document.getElementById('amortizationChart').style.display = 'none';
-      if (window.myChart) window.myChart.destroy();
+    // Clear results for a specific calculator
+    function clearResults(calcType) {
+      document.getElementById(`${calcType}Result`).innerHTML = '';
+      document.getElementById(`${calcType}Chart`).style.display = 'none';
+      const chartInstance = window[calcType + 'Chart'];
+      if (chartInstance && typeof chartInstance.destroy === 'function') {
+        chartInstance.destroy();
+        window[calcType + 'Chart'] = null;
+      }
     }
 
-    // Update input fields
-    function updateInputs() {
-      const calcType = document.getElementById('calcType').value;
-      const inputs = ['emiInput', 'principalInput', 'rateInput', 'tenureInput'];
-      const inputIds = ['emi', 'principal', 'rate', 'tenure'];
+    // EMI Calculator Logic
+    function updateEmiInputs() {
+      const calcType = document.getElementById('emiCalcType').value;
+      const inputs = ['emiInput', 'emiPrincipalInput', 'emiRateInput', 'emiTenureInput'];
+      const inputIds = ['emi', 'emiPrincipal', 'emiRate', 'emiTenure'];
 
-      // Reset all inputs
       inputs.forEach(input => {
         const inputElement = document.getElementById(input);
         inputElement.style.display = 'block';
         const field = document.getElementById(input.replace('Input', ''));
         field.disabled = false;
-        field.value = ''; // Clear values only on calcType change
+        field.value = '';
       });
 
-      // Hide and disable the selected output field
-      const outputInput = `${calcType}Input`;
+      const outputInput = calcType === 'emi' ? 'emiInput' : 
+                         calcType === 'principal' ? 'emiPrincipalInput' : 
+                         calcType === 'rate' ? 'emiRateInput' : 'emiTenureInput';
       document.getElementById(outputInput).style.display = 'none';
-      document.getElementById(calcType).disabled = true;
+      document.getElementById(inputIds[inputs.indexOf(outputInput)]).disabled = true;
 
-      // Focus on the first visible input
       const firstVisibleInput = inputs.find(input => input !== outputInput);
       if (firstVisibleInput) {
         document.getElementById(firstVisibleInput.replace('Input', '')).focus();
       }
 
-      clearResults();
+      clearResults('emi');
     }
 
-    // Run on page load
-    updateInputs();
-
-    // Main calculation function
-    function calculate() {
-      const calcType = document.getElementById('calcType').value;
+    function calculateEmi() {
+      const calcType = document.getElementById('emiCalcType').value;
       let emi = parseFloat(document.getElementById('emi').value);
-      let principal = parseFloat(document.getElementById('principal').value);
-      let rate = parseFloat(document.getElementById('rate').value) / 100 / 12; // Monthly rate
-      let tenure = parseFloat(document.getElementById('tenure').value);
+      let principal = parseFloat(document.getElementById('emiPrincipal').value);
+      let rate = parseFloat(document.getElementById('emiRate').value) / 100 / 12;
+      let tenure = parseFloat(document.getElementById('emiTenure').value);
 
-      // Validate inputs
       const inputs = { emi, principal, rate: rate * 12 * 100, tenure };
       const validInputs = Object.entries(inputs)
         .filter(([key]) => key !== calcType)
         .every(([_, value]) => !isNaN(value) && value > 0);
       if (!validInputs) {
-        document.getElementById('result').innerHTML = '<p class="text-danger">Please enter valid positive numbers for all visible fields.</p>';
+        document.getElementById('emiResult').innerHTML = '<p class="text-danger">Please enter valid positive numbers for all fields.</p>';
         return;
       }
 
       let result;
       if (calcType === 'emi') {
-        // Calculate EMI
         emi = principal * rate * Math.pow(1 + rate, tenure) / (Math.pow(1 + rate, tenure) - 1);
         result = `<p><strong>Monthly EMI:</strong> ₹${emi.toFixed(2)}</p>`;
-        showAmortizationChart(principal, emi, rate, tenure);
+        showEmiChart(principal, emi, rate, tenure);
       } else if (calcType === 'principal') {
-        // Calculate Loan Amount
         principal = emi * (Math.pow(1 + rate, tenure) - 1) / (rate * Math.pow(1 + rate, tenure));
         result = `<p><strong>Loan Amount:</strong> ₹${principal.toFixed(2)}</p>`;
-        showAmortizationChart(principal, emi, rate, tenure);
+        showEmiChart(principal, emi, rate, tenure);
       } else if (calcType === 'tenure') {
-        // Calculate Tenure
-        tenure = calculateTenure(emi, principal, rate);
+        tenure = calculateEmiTenure(emi, principal, rate);
         if (tenure === null) {
-          document.getElementById('result').innerHTML = '<p class="text-danger">Unable to calculate tenure. Check inputs (e.g., EMI may be too low).</p>';
+          document.getElementById('emiResult').innerHTML = '<p class="text-danger">Unable to calculate tenure. Check inputs (e.g., EMI may be too low).</p>';
           return;
         }
         result = `<p><strong>Tenure:</strong> ${tenure.toFixed(0)} months</p>`;
-        showAmortizationChart(principal, emi, rate, tenure);
+        showEmiChart(principal, emi, rate, tenure);
       } else if (calcType === 'rate') {
-        // Calculate Interest Rate
-        rate = calculateRate(emi, principal, tenure);
+        rate = calculateEmiRate(emi, principal, tenure);
         if (rate === null) {
-          document.getElementById('result').innerHTML = '<p class="text-danger">Unable to calculate rate. Check inputs (e.g., EMI may be too low).</p>';
+          document.getElementById('emiResult').innerHTML = '<p class="text-danger">Unable to calculate rate. Check inputs (e.g., EMI may be too low).</p>';
           return;
         }
         result = `<p><strong>Annual Interest Rate:</strong> ${(rate * 12 * 100).toFixed(2)}%</p>`;
-        showAmortizationChart(principal, emi, rate, tenure);
+        showEmiChart(principal, emi, rate, tenure);
       }
 
-      // Display result
-      document.getElementById('result').innerHTML = result;
+      document.getElementById('emiResult').innerHTML = result;
     }
 
-    // Calculate Tenure using binary search
-    function calculateTenure(emi, principal, rate) {
-      let low = 1, high = 1200; // Max 100 years
+    function calculateEmiTenure(emi, principal, rate) {
+      let low = 1, high = 1200;
       let maxIterations = 100, epsilon = 0.01;
       for (let i = 0; i < maxIterations; i++) {
         let mid = (low + high) / 2;
@@ -294,9 +514,8 @@
       return null;
     }
 
-    // Calculate Interest Rate using bisection
-    function calculateRate(emi, principal, tenure) {
-      let low = 0.000001, high = 0.1; // Monthly rate (0.0001% to 120% annual)
+    function calculateEmiRate(emi, principal, tenure) {
+      let low = 0.000001, high = 0.1;
       let maxIterations = 100, epsilon = 0.00001;
       for (let i = 0; i < maxIterations; i++) {
         let mid = (low + high) / 2;
@@ -308,8 +527,7 @@
       return null;
     }
 
-    // Show amortization chart
-    function showAmortizationChart(principal, emi, rate, tenure) {
+    function showEmiChart(principal, emi, rate, tenure) {
       let balances = [];
       let remaining = principal;
       for (let i = 0; i < tenure; i++) {
@@ -319,47 +537,412 @@
         balances.push(remaining.toFixed(2));
       }
 
-      let ctx = document.getElementById('amortizationChart').getContext('2d');
-      document.getElementById('amortizationChart').style.display = 'block';
-      if (window.myChart) window.myChart.destroy();
-      window.myChart = new Chart(ctx, {
+      let ctx = document.getElementById('emiChart').getContext('2d');
+      document.getElementById('emiChart').style.display = 'block';
+      if (window.emiChart) window.emiChart.destroy();
+      window.emiChart = new Chart(ctx, {
         type: 'line',
         data: {
           labels: Array.from({ length: tenure }, (_, i) => i + 1),
           datasets: [{
             label: 'Remaining Balance (₹)',
             data: balances,
-            borderColor: '#007bff',
-            fill: false
+            borderColor: '#4A919E',
+            backgroundColor: 'rgba(74, 145, 158, 0.1)',
+            fill: true,
+            tension: 0.4
           }]
         },
         options: {
           responsive: true,
           scales: {
-            x: { title: { display: true, text: 'Month' } },
-            y: { title: { display: true, text: 'Balance (₹)' } }
+            x: { 
+              title: { display: true, text: 'Month', color: '#1A2526', font: { family: 'Raleway', size: 14 } },
+              ticks: { color: '#1A2526' }
+            },
+            y: { 
+              title: { display: true, text: 'Balance (₹)', color: '#1A2526', font: { family: 'Raleway', size: 14 } },
+              ticks: { color: '#1A2526' }
+            }
+          },
+          plugins: {
+            legend: { labels: { color: '#1A2526', font: { family: 'Raleway', size: 12 } } }
           }
         }
       });
     }
 
+    // FD Calculator Logic
+    function updateFdInputs() {
+      const calcType = document.getElementById('fdCalcType').value;
+      const inputs = ['fdMaturityInput', 'fdPrincipalInput', 'fdRateInput', 'fdTenureInput', 'fdCompoundInput'];
+      const inputIds = ['fdMaturity', 'fdPrincipal', 'fdRate', 'fdTenure', 'fdCompound'];
+
+      inputs.forEach(input => {
+        const inputElement = document.getElementById(input);
+        inputElement.style.display = 'block';
+        const field = document.getElementById(input.replace('Input', ''));
+        field.disabled = false;
+        field.value = input === 'fdCompoundInput' ? field.value : ''; // Preserve compounding selection
+      });
+
+      const outputInput = calcType === 'maturity' ? 'fdMaturityInput' : 
+                         calcType === 'principal' ? 'fdPrincipalInput' : 
+                         calcType === 'rate' ? 'fdRateInput' : 'fdTenureInput';
+      if (calcType !== 'compound') {
+        document.getElementById(outputInput).style.display = 'none';
+        document.getElementById(inputIds[inputs.indexOf(outputInput)]).disabled = true;
+      }
+
+      const firstVisibleInput = inputs.find(input => input !== outputInput && input !== 'fdCompoundInput');
+      if (firstVisibleInput) {
+        document.getElementById(firstVisibleInput.replace('Input', '')).focus();
+      }
+
+      clearResults('fd');
+    }
+
+    function calculateFd() {
+      const calcType = document.getElementById('fdCalcType').value;
+      let maturity = parseFloat(document.getElementById('fdMaturity').value);
+      let principal = parseFloat(document.getElementById('fdPrincipal').value);
+      let rate = parseFloat(document.getElementById('fdRate').value) / 100;
+      let tenure = parseFloat(document.getElementById('fdTenure').value);
+      const compoundFreq = parseInt(document.getElementById('fdCompound').value);
+
+      const inputs = { maturity, principal, rate: rate * 100, tenure };
+      const validInputs = Object.entries(inputs)
+        .filter(([key]) => key !== calcType)
+        .every(([_, value]) => !isNaN(value) && value > 0);
+      if (!validInputs) {
+        document.getElementById('fdResult').innerHTML = '<p class="text-danger">Please enter valid positive numbers for all fields.</p>';
+        return;
+      }
+
+      let result;
+      if (calcType === 'maturity') {
+        maturity = principal * Math.pow(1 + rate / compoundFreq, compoundFreq * tenure);
+        const interestEarned = maturity - principal;
+        result = `
+          <p><strong>Maturity Amount:</strong> ₹${maturity.toFixed(2)}</p>
+          <p><strong>Total Interest Earned:</strong> ₹${interestEarned.toFixed(2)}</p>
+        `;
+        showFdChart(principal, rate, tenure, compoundFreq);
+      } else if (calcType === 'principal') {
+        principal = maturity / Math.pow(1 + rate / compoundFreq, compoundFreq * tenure);
+        const interestEarned = maturity - principal;
+        result = `
+          <p><strong>Principal Amount:</strong> ₹${principal.toFixed(2)}</p>
+          <p><strong>Total Interest Earned:</strong> ₹${interestEarned.toFixed(2)}</p>
+        `;
+        showFdChart(principal, rate, tenure, compoundFreq);
+      } else if (calcType === 'tenure') {
+        tenure = Math.log(maturity / principal) / (compoundFreq * Math.log(1 + rate / compoundFreq));
+        if (isNaN(tenure) || tenure <= 0) {
+          document.getElementById('fdResult').innerHTML = '<p class="text-danger">Unable to calculate tenure. Check inputs (e.g., maturity may be too low).</p>';
+          return;
+        }
+        const interestEarned = maturity - principal;
+        result = `
+          <p><strong>Tenure:</strong> ${tenure.toFixed(2)} years</p>
+          <p><strong>Total Interest Earned:</strong> ₹${interestEarned.toFixed(2)}</p>
+        `;
+        showFdChart(principal, rate, tenure, compoundFreq);
+      } else if (calcType === 'rate') {
+        rate = calculateFdRate(maturity, principal, tenure, compoundFreq);
+        if (rate === null) {
+          document.getElementById('fdResult').innerHTML = '<p class="text-danger">Unable to calculate rate. Check inputs (e.g., maturity may be too low).</p>';
+          return;
+        }
+        const interestEarned = maturity - principal;
+        result = `
+          <p><strong>Annual Interest Rate:</strong> ${(rate * 100).toFixed(2)}%</p>
+          <p><strong>Total Interest Earned:</strong> ₹${interestEarned.toFixed(2)}</p>
+        `;
+        showFdChart(principal, rate, tenure, compoundFreq);
+      }
+
+      document.getElementById('fdResult').innerHTML = result;
+    }
+
+    function calculateFdRate(maturity, principal, tenure, compoundFreq) {
+      let low = 0.000001, high = 1.0;
+      let maxIterations = 100, epsilon = 0.00001;
+      for (let i = 0; i < maxIterations; i++) {
+        let mid = (low + high) / 2;
+        let calculatedMaturity = principal * Math.pow(1 + mid / compoundFreq, compoundFreq * tenure);
+        if (Math.abs(calculatedMaturity - maturity) < epsilon) return mid;
+        if (calculatedMaturity < maturity) low = mid + 0.00001;
+        else high = mid - 0.00001;
+      }
+      return null;
+    }
+
+    function showFdChart(principal, rate, tenure, compoundFreq) {
+      const intervals = tenure * 12;
+      const intervalStep = 1 / 12;
+      let amounts = [];
+      for (let i = 0; i <= intervals; i++) {
+        const currentTenure = i * intervalStep;
+        const amount = principal * Math.pow(1 + rate / compoundFreq, compoundFreq * currentTenure);
+        amounts.push(amount.toFixed(2));
+      }
+
+      let ctx = document.getElementById('fdChart').getContext('2d');
+      document.getElementById('fdChart').style.display = 'block';
+      if (window.fdChart) window.fdChart.destroy();
+      window.fdChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: Array.from({ length: intervals + 1 }, (_, i) => (i / 12).toFixed(1)),
+          datasets: [{
+            label: 'Maturity Amount (₹)',
+            data: amounts,
+            borderColor: '#4A919E',
+            backgroundColor: 'rgba(74, 145, 158, 0.1)',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: { 
+              title: { display: true, text: 'Years', color: '#1A2526', font: { family: 'Raleway', size: 14 } },
+              ticks: { color: '#1A2526' }
+            },
+            y: { 
+              title: { display: true, text: 'Amount (₹)', color: '#1A2526', font: { family: 'Raleway', size: 14 } },
+              ticks: { color: '#1A2526' }
+            }
+          },
+          plugins: {
+            legend: { labels: { color: '#1A2526', font: { family: 'Raleway', size: 12 } } }
+          }
+        }
+      });
+    }
+
+    // RD Calculator Logic
+    function updateRdInputs() {
+      const calcType = document.getElementById('rdCalcType').value;
+      const inputs = ['rdMaturityInput', 'rdMonthlyInput', 'rdRateInput', 'rdTenureInput'];
+      const inputIds = ['rdMaturity', 'rdMonthly', 'rdRate', 'rdTenure'];
+
+      inputs.forEach(input => {
+        const inputElement = document.getElementById(input);
+        inputElement.style.display = 'block';
+        const field = document.getElementById(input.replace('Input', ''));
+        field.disabled = false;
+        field.value = '';
+      });
+
+      const outputInput = calcType === 'maturity' ? 'rdMaturityInput' : 
+                         calcType === 'monthly' ? 'rdMonthlyInput' : 
+                         calcType === 'rate' ? 'rdRateInput' : 'rdTenureInput';
+      document.getElementById(outputInput).style.display = 'none';
+      document.getElementById(inputIds[inputs.indexOf(outputInput)]).disabled = true;
+
+      const firstVisibleInput = inputs.find(input => input !== outputInput);
+      if (firstVisibleInput) {
+        document.getElementById(firstVisibleInput.replace('Input', '')).focus();
+      }
+
+      clearResults('rd');
+    }
+
+    function calculateRd() {
+      const calcType = document.getElementById('rdCalcType').value;
+      let maturity = parseFloat(document.getElementById('rdMaturity').value);
+      let monthlyDeposit = parseFloat(document.getElementById('rdMonthly').value);
+      let rate = parseFloat(document.getElementById('rdRate').value) / 100;
+      let tenure = parseFloat(document.getElementById('rdTenure').value);
+      const compoundFreq = 4;
+
+      const inputs = { maturity, monthlyDeposit, rate: rate * 100, tenure };
+      const validInputs = Object.entries(inputs)
+        .filter(([key]) => key !== calcType)
+        .every(([_, value]) => !isNaN(value) && value > 0);
+      if (!validInputs) {
+        document.getElementById('rdResult').innerHTML = '<p class="text-danger">Please enter valid positive numbers for all fields.</p>';
+        return;
+      }
+
+      let result;
+      if (calcType === 'maturity') {
+        maturity = calculateRdMaturity(monthlyDeposit, rate, tenure, compoundFreq);
+        const totalDeposits = monthlyDeposit * tenure;
+        const interestEarned = maturity - totalDeposits;
+        result = `
+          <p><strong>Maturity Amount:</strong> ₹${maturity.toFixed(2)}</p>
+          <p><strong>Total Interest Earned:</strong> ₹${interestEarned.toFixed(2)}</p>
+        `;
+        showRdChart(monthlyDeposit, rate, tenure, compoundFreq);
+      } else if (calcType === 'monthly') {
+        monthlyDeposit = calculateRdMonthly(maturity, rate, tenure, compoundFreq);
+        if (monthlyDeposit === null) {
+          document.getElementById('rdResult').innerHTML = '<p class="text-danger">Unable to calculate monthly deposit. Check inputs (e.g., maturity may be too low).</p>';
+          return;
+        }
+        const totalDeposits = monthlyDeposit * tenure;
+        const interestEarned = maturity - totalDeposits;
+        result = `
+          <p><strong>Monthly Deposit:</strong> ₹${monthlyDeposit.toFixed(2)}</p>
+          <p><strong>Total Interest Earned:</strong> ₹${interestEarned.toFixed(2)}</p>
+        `;
+        showRdChart(monthlyDeposit, rate, tenure, compoundFreq);
+      } else if (calcType === 'tenure') {
+        tenure = calculateRdTenure(maturity, monthlyDeposit, rate, compoundFreq);
+        if (tenure === null) {
+          document.getElementById('rdResult').innerHTML = '<p class="text-danger">Unable to calculate tenure. Check inputs (e.g., maturity may be too low).</p>';
+          return;
+        }
+        const totalDeposits = monthlyDeposit * tenure;
+        const interestEarned = maturity - totalDeposits;
+        result = `
+          <p><strong>Tenure:</strong> ${tenure.toFixed(0)} months</p>
+          <p><strong>Total Interest Earned:</strong> ₹${interestEarned.toFixed(2)}</p>
+        `;
+        showRdChart(monthlyDeposit, rate, tenure, compoundFreq);
+      } else if (calcType === 'rate') {
+        rate = calculateRdRate(maturity, monthlyDeposit, tenure, compoundFreq);
+        if (rate === null) {
+          document.getElementById('rdResult').innerHTML = '<p class="text-danger">Unable to calculate rate. Check inputs (e.g., maturity may be too low).</p>';
+          return;
+        }
+        const totalDeposits = monthlyDeposit * tenure;
+        const interestEarned = maturity - totalDeposits;
+        result = `
+          <p><strong>Annual Interest Rate:</strong> ${(rate * 100).toFixed(2)}%</p>
+          <p><strong>Total Interest Earned:</strong> ₹${interestEarned.toFixed(2)}</p>
+        `;
+        showRdChart(monthlyDeposit, rate, tenure, compoundFreq);
+      }
+
+      document.getElementById('rdResult').innerHTML = result;
+    }
+
+    function calculateRdMaturity(monthlyDeposit, rate, tenure, compoundFreq) {
+      let maturity = 0;
+      const monthlyRate = rate / compoundFreq;
+      const totalCompounds = tenure;
+      for (let i = 1; i <= totalCompounds; i++) {
+        const monthsRemaining = totalCompounds - i;
+        const compoundsForThisDeposit = Math.floor(monthsRemaining / 3) + (monthsRemaining % 3 === 0 ? 0 : 1);
+        const amountForThisDeposit = monthlyDeposit * Math.pow(1 + monthlyRate, compoundsForThisDeposit);
+        maturity += amountForThisDeposit;
+      }
+      return maturity;
+    }
+
+    function calculateRdMonthly(maturity, rate, tenure, compoundFreq) {
+      let low = 0.01, high = 1000000;
+      let maxIterations = 100, epsilon = 0.01;
+      for (let i = 0; i < maxIterations; i++) {
+        let mid = (low + high) / 2;
+        let calculatedMaturity = calculateRdMaturity(mid, rate, tenure, compoundFreq);
+        if (Math.abs(calculatedMaturity - maturity) < epsilon) return mid;
+        if (calculatedMaturity < maturity) low = mid + 0.01;
+        else high = mid - 0.01;
+      }
+      return null;
+    }
+
+    function calculateRdTenure(maturity, monthlyDeposit, rate, compoundFreq) {
+      let low = 1, high = 1200;
+      let maxIterations = 100, epsilon = 0.01;
+      for (let i = 0; i < maxIterations; i++) {
+        let mid = Math.round((low + high) / 2);
+        let calculatedMaturity = calculateRdMaturity(monthlyDeposit, rate, mid, compoundFreq);
+        if (Math.abs(calculatedMaturity - maturity) < epsilon) return mid;
+        if (calculatedMaturity < maturity) low = mid + 1;
+        else high = mid - 1;
+      }
+      return null;
+    }
+
+    function calculateRdRate(maturity, monthlyDeposit, tenure, compoundFreq) {
+      let low = 0.000001, high = 1.0;
+      let maxIterations = 100, epsilon = 0.00001;
+      for (let i = 0; i < maxIterations; i++) {
+        let mid = (low + high) / 2;
+        let calculatedMaturity = calculateRdMaturity(monthlyDeposit, mid, tenure, compoundFreq);
+        if (Math.abs(calculatedMaturity - maturity) < epsilon) return mid;
+        if (calculatedMaturity < maturity) low = mid + 0.00001;
+        else high = mid - 0.00001;
+      }
+      return null;
+    }
+
+    function showRdChart(monthlyDeposit, rate, tenure, compoundFreq) {
+      let amounts = [0];
+      const monthlyRate = rate / compoundFreq;
+      for (let i = 1; i <= tenure; i++) {
+        let amount = 0;
+        for (let j = 1; j <= i; j++) {
+          const monthsRemaining = i - j;
+          const compoundsForThisDeposit = Math.floor(monthsRemaining / 3) + (monthsRemaining % 3 === 0 ? 0 : 1);
+          amount += monthlyDeposit * Math.pow(1 + monthlyRate, compoundsForThisDeposit);
+        }
+        amounts.push(amount.toFixed(2));
+      }
+
+      let ctx = document.getElementById('rdChart').getContext('2d');
+      document.getElementById('rdChart').style.display = 'block';
+      if (window.rdChart) window.rdChart.destroy();
+      window.rdChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: Array.from({ length: tenure + 1 }, (_, i) => i),
+          datasets: [{
+            label: 'Maturity Amount (₹)',
+            data: amounts,
+            borderColor: '#4A919E',
+            backgroundColor: 'rgba(74, 145, 158, 0.1)',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: { 
+              title: { display: true, text: 'Months', color: '#1A2526', font: { family: 'Raleway', size: 14 } },
+              ticks: { color: '#1A2526' }
+            },
+            y: { 
+              title: { display: true, text: 'Amount (₹)', color: '#1A2526', font: { family: 'Raleway', size: 14 } },
+              ticks: { color: '#1A2526' }
+            }
+          },
+          plugins: {
+            legend: { labels: { color: '#1A2526', font: { family: 'Raleway', size: 12 } } }
+          }
+        }
+      });
+    }
+
+    // Run on page load
+    updateEmiInputs();
+    updateFdInputs();
+    updateRdInputs();
+
     // Razorpay Payment
     document.getElementById('buyGuide').onclick = function () {
       let options = {
-        key: 'YOUR_RAZORPAY_KEY_ID', // Replace with your Razorpay Key ID
-        amount: 5000, // ₹50 in paise
+        key: 'YOUR_RAZORPAY_KEY_ID',
+        amount: 5000,
         currency: 'INR',
         name: 'Financial Planning Guide',
         description: 'Comprehensive EMI, FD, RD Planning PDF',
         handler: function (response) {
           alert('Payment successful! Download link sent to your email.');
-          // Add logic for PDF delivery
         },
         prefill: {
           name: 'Customer Name',
           email: 'customer@example.com'
         },
-        theme: { color: '#28a745' }
+        theme: { color: '#D4AF37' }
       };
       let rzp = new Razorpay(options);
       rzp.open();
