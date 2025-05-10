@@ -16,6 +16,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- AdSense Script and Initialization -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9605816809850366" crossorigin="anonymous"></script>
+  <script>
+       // Initialize Auto Ads and manual ad unit in one go
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9605816809850366",
+     });
+  </script>
   <!-- Custom CSS -->
   <style>
     body {
@@ -356,10 +364,15 @@
       </div>
     </div>
 
-    <!-- AdSense Placeholder -->
+    <!-- AdSense Manual Ad Unit -->
     <div class="ad-placeholder">
-      <p>Ad Space (Google AdSense Placeholder)</p>
-      <!-- Replace with actual AdSense code after approval -->
+      <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9605816809850366"
+     data-ad-slot="8205416744"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+      <!-- Removed inline push call since it's handled in the <head> -->
     </div>
 
     <!-- Affiliate Links -->
@@ -367,10 +380,9 @@
       <h3>Explore Financial Products</h3>
       <p>Discover the best financial products in India:</p>
       <ul>
-        <li><a href="https://your-affiliate-link.com" target="_blank" rel="nofollow">HDFC Bank Personal Loans</a></li>
-        <li><a href="https://your-affiliate-link.com" target="_blank" rel="nofollow">SBI Fixed Deposits</a></li>
-        <li><a href="https://your-affiliate-link.com" target="_blank" rel="nofollow">Post Office Recurring Deposits</a></li>
-        <!-- Replace with actual affiliate links (e.g., CJ Affiliate, Amazon Associates) -->
+        <li><a href="https://www.amazon.in/dp/B08XYZ1234?tag=youraffiliateid-21" target="_blank" rel="nofollow">HDFC Bank Personal Loans</a></li>
+        <li><a href="https://www.amazon.in/dp/B08XYZ5678?tag=youraffiliateid-21" target="_blank" rel="nofollow">SBI Fixed Deposits</a></li>
+        <li><a href="https://www.amazon.in/dp/B08XYZ9012?tag=youraffiliateid-21" target="_blank" rel="nofollow">Post Office Recurring Deposits</a></li>
       </ul>
       <p><small>Affiliate links help support this free tool.</small></p>
     </div>
@@ -583,7 +595,7 @@
         inputElement.style.display = 'block';
         const field = document.getElementById(input.replace('Input', ''));
         field.disabled = false;
-        field.value = input === 'fdCompoundInput' ? field.value : ''; // Preserve compounding selection
+        field.value = input === 'fdCompoundInput' ? field.value : '';
       });
 
       const outputInput = calcType === 'maturity' ? 'fdMaturityInput' : 
