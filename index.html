@@ -20,9 +20,9 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9605816809850366" crossorigin="anonymous"></script>
   <script>
        // Initialize Auto Ads and manual ad unit in one go
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-9605816809850366",
-     });
+       (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9605816809850366",
+       });
   </script>
   <!-- Custom CSS -->
   <style>
@@ -367,11 +367,11 @@
     <!-- AdSense Manual Ad Unit -->
     <div class="ad-placeholder">
       <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9605816809850366"
-     data-ad-slot="8205416744"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+           style="display:block"
+           data-ad-client="ca-pub-9605816809850366"
+           data-ad-slot="8205416744"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
       <!-- Removed inline push call since it's handled in the <head> -->
     </div>
 
@@ -428,6 +428,11 @@
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <!-- Calculator Logic -->
   <script>
+    // Initialize chart variables to null
+    window.emiChart = null;
+    window.fdChart = null;
+    window.rdChart = null;
+
     // Clear results for a specific calculator
     function clearResults(calcType) {
       document.getElementById(`${calcType}Result`).innerHTML = '';
@@ -435,8 +440,8 @@
       const chartInstance = window[calcType + 'Chart'];
       if (chartInstance && typeof chartInstance.destroy === 'function') {
         chartInstance.destroy();
-        window[calcType + 'Chart'] = null;
       }
+      window[calcType + 'Chart'] = null;
     }
 
     // EMI Calculator Logic
@@ -546,12 +551,16 @@
         let interest = remaining * rate;
         let principalPaid = emi - interest;
         remaining -= principalPaid;
+        if (remaining < 0) remaining = 0; // Prevent negative balance
         balances.push(remaining.toFixed(2));
       }
 
       let ctx = document.getElementById('emiChart').getContext('2d');
       document.getElementById('emiChart').style.display = 'block';
-      if (window.emiChart) window.emiChart.destroy();
+      
+      // Clear previous chart using the centralized clearResults function
+      clearResults('emi');
+
       window.emiChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -691,8 +700,8 @@
     }
 
     function showFdChart(principal, rate, tenure, compoundFreq) {
-      const intervals = tenure * 12;
-      const intervalStep = 1 / 12;
+      const intervals = Math.min(tenure * 12, 120); // Cap intervals to prevent excessive data points
+      const intervalStep = tenure / intervals;
       let amounts = [];
       for (let i = 0; i <= intervals; i++) {
         const currentTenure = i * intervalStep;
@@ -702,11 +711,14 @@
 
       let ctx = document.getElementById('fdChart').getContext('2d');
       document.getElementById('fdChart').style.display = 'block';
-      if (window.fdChart) window.fdChart.destroy();
+      
+      // Clear previous chart
+      clearResults('fd');
+
       window.fdChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: Array.from({ length: intervals + 1 }, (_, i) => (i / 12).toFixed(1)),
+          labels: Array.from({ length: intervals + 1 }, (_, i) => (i * intervalStep).toFixed(1)),
           datasets: [{
             label: 'Maturity Amount (₹)',
             data: amounts,
@@ -889,10 +901,13 @@
     function showRdChart(monthlyDeposit, rate, tenure, compoundFreq) {
       let amounts = [0];
       const monthlyRate = rate / compoundFreq;
-      for (let i = 1; i <= tenure; i++) {
+      const intervals = Math.min(tenure, 120); // Cap intervals for performance
+      const step = tenure / intervals;
+      for (let i = 1; i <= intervals; i++) {
+        let month = Math.round(i * step);
         let amount = 0;
-        for (let j = 1; j <= i; j++) {
-          const monthsRemaining = i - j;
+        for (let j = 1; j <= month; j++) {
+          const monthsRemaining = month - j;
           const compoundsForThisDeposit = Math.floor(monthsRemaining / 3) + (monthsRemaining % 3 === 0 ? 0 : 1);
           amount += monthlyDeposit * Math.pow(1 + monthlyRate, compoundsForThisDeposit);
         }
@@ -901,11 +916,14 @@
 
       let ctx = document.getElementById('rdChart').getContext('2d');
       document.getElementById('rdChart').style.display = 'block';
-      if (window.rdChart) window.rdChart.destroy();
+      
+      // Clear previous chart
+      clearResults('rd');
+
       window.rdChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: Array.from({ length: tenure + 1 }, (_, i) => i),
+          labels: Array.from({ length: intervals + 1 }, (_, i) => Math.round(i * step)),
           datasets: [{
             label: 'Maturity Amount (₹)',
             data: amounts,
