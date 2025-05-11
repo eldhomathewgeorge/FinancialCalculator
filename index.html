@@ -19,11 +19,11 @@
   <!-- AdSense Script and Initialization -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9605816809850366" crossorigin="anonymous"></script>
   <script>
-       // Initialize Auto Ads and manual ad unit in one go
-       (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-9605816809850366",
-       });
-  </script>
+    // Initialize Auto Ads and manual ad unit in one go
+    (adsbygoogle = window.adsbygoogle || []).push({
+         google_ad_client: "ca-pub-9605816809850366",
+    });
+</script>
   <!-- Custom CSS -->
   <style>
     body {
@@ -200,6 +200,13 @@
       border-color: #D4AF37;
       box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
       outline: none;
+    }
+    /* Fix for form-select width inside input-group */
+    .input-group .form-select {
+      width: 100% !important;
+      min-width: 300px;
+      max-width: 100%;
+      flex: 1 1 auto;
     }
     a {
       color: #4A919E;
