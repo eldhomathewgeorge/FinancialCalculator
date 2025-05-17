@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="QuickFinCalc - Free EMI, FD, and RD Calculators for India. Calculate loan EMIs, Fixed Deposit returns, and Recurring Deposit savings easily.">
-  <meta name="keywords" content="EMI calculator India, FD calculator, RD calculator, financial planning tools, personal finance India">
+  <meta name="description" content="QuickFinCalc - Flexible EMI, FD, and RD Calculators for India. Calculate EMI, Loan Amount, Tenure, or Interest Rate in one tool. Plan your finances easily with our all-in-one financial calculators.">
+  <meta name="keywords" content="EMI calculator India, calculate loan amount from EMI, flexible financial calculator, FD calculator, RD calculator, calculate tenure from EMI, calculate interest rate from EMI, personal finance India">
   <meta name="author" content="Your Name">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://quickfincalc.in/index.html">
-  <title>QuickFinCalc - EMI, FD, and RD Calculators for India</title>
+  <link rel="canonical" href="https://quickfincalc.in/">
+  <title>QuickFinCalc - Flexible EMI, FD, and RD Calculators for India</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- AdSense Auto-Ads Code -->
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9605816809850366" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9605816809850366" crossorigin="anonymous"></script>
   <!-- Custom CSS -->
   <style>
     body {
@@ -27,34 +27,80 @@
     }
     .header {
       background: linear-gradient(135deg, #1A2526 0%, #4A919E 100%);
-      padding: 40px 20px;
+      padding: 20px;
       text-align: center;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
     .header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: #F5F6F5;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .header p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #D4AF37;
       font-weight: 300;
+      margin-bottom: 12px;
+    }
+    .highlight-banner {
+      background: linear-gradient(135deg, #D4AF37 0%, #B89729 100%);
+      padding: 15px;
+      text-align: center;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .highlight-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #1A2526;
+      margin-bottom: 5px;
+    }
+    .highlight-banner p {
+      font-size: 0.9rem;
+      color: #1A2526;
+      font-weight: 500;
+      margin: 0;
     }
     .container {
-      max-width: 800px;
+      max-width: 1200px;
       background: #F5F6F5;
-      padding: 40px;
+      padding: 20px;
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
-      margin: 40px auto;
+      margin: 20px auto;
       animation: fadeIn 1s ease-in-out;
       color: #1A2526;
     }
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
+    }
+    .main-layout {
+      display: flex;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .calculator-column {
+      flex: 0 0 50%;
+      min-width: 0;
+      height: 100%;
+    }
+    .content-column {
+      flex: 0 0 50%;
+      background: #E8ECEF;
+      border-radius: 8px;
+      padding: 20px;
+      overflow-y: auto;
+      height: 100%;
+    }
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      overflow-x: visible;
+      overflow-y: visible;
     }
     .nav-tabs .nav-link {
       color: #1A2526;
@@ -64,6 +110,7 @@
       background: transparent;
       padding: 10px 20px;
       transition: color 0.3s ease;
+      white-space: nowrap;
     }
     .nav-tabs .nav-link:hover {
       color: #D4AF37;
@@ -76,11 +123,17 @@
     .tab-pane {
       padding: 20px 0;
     }
+    .tab-description {
+      font-size: 0.95rem;
+      color: #4A919E;
+      margin-bottom: 20px;
+      font-style: italic;
+      text-align: center;
+    }
     .form-label {
       font-weight: 600;
       color: #1A2526;
     }
-    /* Ensure input fields take full width inside input-group */
     .input-group {
       display: none;
     }
@@ -131,10 +184,6 @@
       font-weight: 600;
     }
     .context-section {
-      margin-top: 30px;
-      padding: 20px;
-      background: #E8ECEF;
-      border-radius: 8px;
       color: #1A2526;
     }
     .context-section h3 {
@@ -179,12 +228,54 @@
     a:hover {
       color: #D4AF37;
     }
+    @media (min-width: 992px) {
+      .content-column {
+        max-height: 700px;
+      }
+    }
+    @media (max-width: 991px) {
+      .main-layout {
+        flex-direction: column;
+      }
+      .calculator-column, .content-column {
+        flex: 1;
+      }
+      .content-column {
+        height: auto;
+      }
+    }
     @media (max-width: 576px) {
       .header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+      }
+      .header p {
+        font-size: 0.9rem;
       }
       .container {
-        padding: 20px;
+        padding: 15px;
+        margin: 15px auto;
+      }
+      .highlight-banner {
+        padding: 10px;
+      }
+      .highlight-banner h2 {
+        font-size: 1.3rem;
+      }
+      .highlight-banner p {
+        font-size: 0.8rem;
+      }
+      .tab-description {
+        font-size: 0.85rem;
+      }
+      .nav-tabs .nav-link {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+      }
+      .context-section h3 {
+        font-size: 1.3rem;
+      }
+      .context-section p, .context-section li {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -193,147 +284,164 @@
   <!-- Header -->
   <div class="header">
     <h1>QuickFinCalc</h1>
-    <p>Premium Financial Calculators for India</p>
+    <p>India’s Most Flexible Financial Calculators – EMI, FD, RD & More</p>
     <a href="./blog.html" class="btn btn-primary">Visit Our Blog</a>
   </div>
 
   <!-- Main Container -->
   <div class="container">
-    <!-- Calculator Tabs -->
-    <ul class="nav nav-tabs" id="calcTabs" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="emi-tab" data-bs-toggle="tab" data-bs-target="#emi" type="button" role="tab" aria-controls="emi" aria-selected="true">EMI Calculator</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="fd-tab" data-bs-toggle="tab" data-bs-target="#fd" type="button" role="tab" aria-controls="fd" aria-selected="false">FD Calculator</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="rd-tab" data-bs-toggle="tab" data-bs-target="#rd" type="button" role="tab" aria-controls="rd" aria-selected="false">RD Calculator</button>
-      </li>
-    </ul>
-
-    <!-- Tab Content -->
-    <div class="tab-content" id="calcTabsContent">
-      <!-- EMI Calculator -->
-      <div class="tab-pane fade show active" id="emi" role="tabpanel" aria-labelledby="emi-tab">
-        <h2 class="text-center mb-4">EMI Calculator</h2>
-        <div class="mb-3">
-          <label for="emi-calc-type" class="form-label">Calculation Type</label>
-          <select class="form-select" id="emi-calc-type">
-            <option value="emi">EMI (MONTHLY PAYMENT)</option>
-            <option value="principal">Loan Amount</option>
-            <option value="tenure">Tenure (Months)</option>
-            <option value="interest">Annual Interest Rate (%)</option>
-          </select>
-        </div>
-        <div id="emi-inputs">
-          <div class="mb-3 input-group emi-principal-input">
-            <label for="emi-principal" class="form-label">Loan Amount (₹)</label>
-            <input type="number" class="form-control" id="emi-principal" placeholder="e.g., 500000">
-          </div>
-          <div class="mb-3 input-group emi-interest-input">
-            <label for="emi-interest" class="form-label">Interest Rate (% per annum)</label>
-            <input type="number" class="form-control" id="emi-interest" placeholder="e.g., 8.5" step="0.01">
-          </div>
-          <div class="mb-3 input-group emi-tenure-input">
-            <label for="emi-tenure" class="form-label">Tenure (Months)</label>
-            <input type="number" class="form-control" id="emi-tenure" placeholder="e.g., 60">
-          </div>
-          <div class="mb-3 input-group emi-emi-input">
-            <label for="emi-emi" class="form-label">EMI (₹)</label>
-            <input type="number" class="form-control" id="emi-emi" placeholder="e.g., 10250">
-          </div>
-        </div>
-        <button class="btn btn-primary w-100" onclick="calculateEMI()">Calculate</button>
-        <div id="emi-result" class="result"></div>
-      </div>
-
-      <!-- FD Calculator -->
-      <div class="tab-pane fade" id="fd" role="tabpanel" aria-labelledby="fd-tab">
-        <h2 class="text-center mb-4">FD Calculator</h2>
-        <div class="mb-3">
-          <label for="fd-calc-type" class="form-label">Calculation Type</label>
-          <select class="form-select" id="fd-calc-type">
-            <option value="maturity">MATURITY AMOUNT</option>
-            <option value="principal">Principal</option>
-            <option value="tenure">Tenure (Years)</option>
-            <option value="interest">Annual Interest Rate (%)</option>
-          </select>
-        </div>
-        <div id="fd-inputs">
-          <div class="mb-3 input-group fd-principal-input">
-            <label for="fd-principal" class="form-label">Principal Amount (₹)</label>
-            <input type="number" class="form-control" id="fd-principal" placeholder="e.g., 500000">
-          </div>
-          <div class="mb-3 input-group fd-interest-input">
-            <label for="fd-interest" class="form-label">Interest Rate (% per annum)</label>
-            <input type="number" class="form-control" id="fd-interest" placeholder="e.g., 7" step="0.01">
-          </div>
-          <div class="mb-3 input-group fd-tenure-input">
-            <label for="fd-tenure" class="form-label">Tenure (Years)</label>
-            <input type="number" class="form-control" id="fd-tenure" placeholder="e.g., 5">
-          </div>
-          <div class="mb-3 input-group fd-maturity-input">
-            <label for="fd-maturity" class="form-label">Maturity Amount (₹)</label>
-            <input type="number" class="form-control" id="fd-maturity" placeholder="e.g., 708144">
-          </div>
-          <div class="mb-3 input-group fd-compounding-input">
-            <label for="fd-compounding" class="form-label">Compounding Frequency</label>
-            <select class="form-select" id="fd-compounding">
-              <option value="1">Yearly</option>
-              <option value="2">Half-Yearly</option>
-              <option value="4">Quarterly</option>
-              <option value="12">Monthly</option>
-            </select>
-          </div>
-        </div>
-        <button class="btn btn-primary w-100" onclick="calculateFD()">Calculate</button>
-        <div id="fd-result" class="result"></div>
-      </div>
-
-      <!-- RD Calculator -->
-      <div class="tab-pane fade" id="rd" role="tabpanel" aria-labelledby="rd-tab">
-        <h2 class="text-center mb-4">RD Calculator</h2>
-        <div class="mb-3">
-          <label for="rd-calc-type" class="form-label">Calculation Type</label>
-          <select class="form-select" id="rd-calc-type">
-            <option value="maturity">MATURITY AMOUNT</option>
-            <option value="installment">MONTHLY DEPOSIT</option>
-            <option value="tenure">Tenure (Months)</option>
-            <option value="interest">Annual Interest Rate (%)</option>
-          </select>
-        </div>
-        <div id="rd-inputs">
-          <div class="mb-3 input-group rd-installment-input">
-            <label for="rd-installment" class="form-label">Monthly Installment (₹)</label>
-            <input type="number" class="form-control" id="rd-installment" placeholder="e.g., 5000">
-          </div>
-          <div class="mb-3 input-group rd-interest-input">
-            <label for="rd-interest" class="form-label">Interest Rate (% per annum)</label>
-            <input type="number" class="form-control" id="rd-interest" placeholder="e.g., 6.5" step="0.01">
-          </div>
-          <div class="mb-3 input-group rd-tenure-input">
-            <label for="rd-tenure" class="form-label">Tenure (Months)</label>
-            <input type="number" class="form-control" id="rd-tenure" placeholder="e.g., 60">
-          </div>
-          <div class="mb-3 input-group rd-maturity-input">
-            <label for="rd-maturity" class="form-label">Maturity Amount (₹)</label>
-            <input type="number" class="form-control" id="rd-maturity" placeholder="e.g., 348500">
-          </div>
-        </div>
-        <button class="btn btn-primary w-100" onclick="calculateRD()">Calculate</button>
-        <div id="rd-result" class="result"></div>
-      </div>
+    <!-- Highlight Banner -->
+    <div class="highlight-banner">
+      <h2>One Calculator, Endless Possibilities</h2>
+      <p>Calculate EMI, Loan Amount, Tenure, or Interest Rate – All in One Place!</p>
     </div>
 
-    <!-- Contextual Content Section -->
-    <div id="context-section" class="context-section">
-      <h3 id="context-title">EMI Calculator - EMI (MONTHLY PAYMENT)</h3>
-      <p id="context-description"></p>
-      <h4>Tips</h4>
-      <ul id="context-tips"></ul>
-      <h4>Context</h4>
-      <p id="context-context"></p>
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Calculator Column -->
+      <div class="calculator-column">
+        <!-- Calculator Tabs -->
+        <ul class="nav nav-tabs" id="calcTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="emi-tab" data-bs-toggle="tab" data-bs-target="#emi" type="button" role="tab" aria-controls="emi" aria-selected="true">EMI Calculator</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="fd-tab" data-bs-toggle="tab" data-bs-target="#fd" type="button" role="tab" aria-controls="fd" aria-selected="false">FD Calculator</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="rd-tab" data-bs-toggle="tab" data-bs-target="#rd" type="button" role="tab" aria-controls="rd" aria-selected="false">RD Calculator</button>
+          </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="calcTabsContent">
+          <!-- EMI Calculator -->
+          <div class="tab-pane fade show active" id="emi" role="tabpanel" aria-labelledby="emi-tab">
+            <h2 class="text-center mb-4">EMI Calculator</h2>
+            <p class="tab-description">Not just EMI – calculate Loan Amount, Tenure, or Interest Rate with ease!</p>
+            <div class="mb-3">
+              <label for="emi-calc-type" class="form-label">Calculation Type</label>
+              <select class="form-select" id="emi-calc-type">
+                <option value="emi">EMI (MONTHLY PAYMENT)</option>
+                <option value="principal">Loan Amount</option>
+                <option value="tenure">Tenure (Months)</option>
+                <option value="interest">Annual Interest Rate (%)</option>
+              </select>
+            </div>
+            <div id="emi-inputs">
+              <div class="mb-3 input-group emi-principal-input">
+                <label for="emi-principal" class="form-label">Loan Amount (₹)</label>
+                <input type="number" class="form-control" id="emi-principal" placeholder="e.g., 500000">
+              </div>
+              <div class="mb-3 input-group emi-interest-input">
+                <label for="emi-interest" class="form-label">Interest Rate (% per annum)</label>
+                <input type="number" class="form-control" id="emi-interest" placeholder="e.g., 8.5" step="0.01">
+              </div>
+              <div class="mb-3 input-group emi-tenure-input">
+                <label for="emi-tenure" class="form-label">Tenure (Months)</label>
+                <input type="number" class="form-control" id="emi-tenure" placeholder="e.g., 60">
+              </div>
+              <div class="mb-3 input-group emi-emi-input">
+                <label for="emi-emi" class="form-label">EMI (₹)</label>
+                <input type="number" class="form-control" id="emi-emi" placeholder="e.g., 10250">
+              </div>
+            </div>
+            <button class="btn btn-primary w-100" onclick="calculateEMI()">Calculate</button>
+            <div id="emi-result" class="result"></div>
+          </div>
+
+          <!-- FD Calculator -->
+          <div class="tab-pane fade" id="fd" role="tabpanel" aria-labelledby="fd-tab">
+            <h2 class="text-center mb-4">FD Calculator</h2>
+            <p class="tab-description">Beyond Maturity – calculate Principal, Tenure, or Interest Rate effortlessly!</p>
+            <div class="mb-3">
+              <label for="fd-calc-type" class="form-label">Calculation Type</label>
+              <select class="form-select" id="fd-calc-type">
+                <option value="maturity">MATURITY AMOUNT</option>
+                <option value="principal">Principal</option>
+                <option value="tenure">Tenure (Years)</option>
+                <option value="interest">Annual Interest Rate (%)</option>
+              </select>
+            </div>
+            <div id="fd-inputs">
+              <div class="mb-3 input-group fd-principal-input">
+                <label for="fd-principal" class="form-label">Principal Amount (₹)</label>
+                <input type="number" class="form-control" id="fd-principal" placeholder="e.g., 500000">
+              </div>
+              <div class="mb-3 input-group fd-interest-input">
+                <label for="fd-interest" class="form-label">Interest Rate (% per annum)</label>
+                <input type="number" class="form-control" id="fd-interest" placeholder="e.g., 7" step="0.01">
+              </div>
+              <div class="mb-3 input-group fd-tenure-input">
+                <label for="fd-tenure" class="form-label">Tenure (Years)</label>
+                <input type="number" class="form-control" id="fd-tenure" placeholder="e.g., 5">
+              </div>
+              <div class="mb-3 input-group fd-maturity-input">
+                <label for="fd-maturity" class="form-label">Maturity Amount (₹)</label>
+                <input type="number" class="form-control" id="fd-maturity" placeholder="e.g., 708144">
+              </div>
+              <div class="mb-3 input-group fd-compounding-input">
+                <label for="fd-compounding" class="form-label">Compounding Frequency</label>
+                <select class="form-select" id="fd-compounding">
+                  <option value="1">Yearly</option>
+                  <option value="2">Half-Yearly</option>
+                  <option value="4">Quarterly</option>
+                  <option value="12">Monthly</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-primary w-100" onclick="calculateFD()">Calculate</button>
+            <div id="fd-result" class="result"></div>
+          </div>
+
+          <!-- RD Calculator -->
+          <div class="tab-pane fade" id="rd" role="tabpanel" aria-labelledby="rd-tab">
+            <h2 class="text-center mb-4">RD Calculator</h2>
+            <p class="tab-description">More than Maturity – calculate Monthly Deposit, Tenure, or Interest Rate with ease!</p>
+            <div class="mb-3">
+              <label for="rd-calc-type" class="form-label">Calculation Type</label>
+              <select class="form-select" id="rd-calc-type">
+                <option value="maturity">MATURITY AMOUNT</option>
+                <option value="installment">MONTHLY DEPOSIT</option>
+                <option value="tenure">Tenure (Months)</option>
+                <option value="interest">Annual Interest Rate (%)</option>
+              </select>
+            </div>
+            <div id="rd-inputs">
+              <div class="mb-3 input-group rd-installment-input">
+                <label for="rd-installment" class="form-label">Monthly Installment (₹)</label>
+                <input type="number" class="form-control" id="rd-installment" placeholder="e.g., 5000">
+              </div>
+              <div class="mb-3 input-group rd-interest-input">
+                <label for="rd-interest" class="form-label">Interest Rate (% per annum)</label>
+                <input type="number" class="form-control" id="rd-interest" placeholder="e.g., 6.5" step="0.01">
+              </div>
+              <div class="mb-3 input-group rd-tenure-input">
+                <label for="rd-tenure" class="form-label">Tenure (Months)</label>
+                <input type="number" class="form-control" id="rd-tenure" placeholder="e.g., 60">
+              </div>
+              <div class="mb-3 input-group rd-maturity-input">
+                <label for="rd-maturity" class="form-label">Maturity Amount (₹)</label>
+                <input type="number" class="form-control" id="rd-maturity" placeholder="e.g., 348500">
+              </div>
+            </div>
+            <button class="btn btn-primary w-100" onclick="calculateRD()">Calculate</button>
+            <div id="rd-result" class="result"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="content-column">
+        <div id="context-section" class="context-section">
+          <h3 id="context-title">EMI Calculator - EMI (MONTHLY PAYMENT)</h3>
+          <p id="context-description"></p>
+          <h4>Tips</h4>
+          <ul id="context-tips"></ul>
+          <h4>Context</h4>
+          <p id="context-context"></p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -347,7 +455,7 @@
   </footer>
 
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Calculator and Context Script -->
   <script>
     // Content for each calculator and dropdown option
@@ -385,7 +493,7 @@
             "If the calculated tenure exceeds your repayment capacity, consider increasing your EMI or making periodic prepayments to shorten the loan term.",
             "Be mindful of floating interest rates; if the RBI increases rates in 2025, your EMI or tenure might increase for adjustable-rate loans.",
             "Use a slightly higher interest rate in your calculations to buffer against potential rate hikes, especially for long-term loans like home loans.",
-            "Check if your lender allows tenure adjustments without penalties—some Indian banks offer flexibility to extend or shorten tenures based on your financial situation."
+            "Check if your lender allows tenure adjustments without penalties—some Indian banks offer flexibility to extend or shorten tenures based on your financial situation"
           ],
           context: "In 2025, loan tenures in India vary widely: personal loans typically range from 1 to 5 years, while home loans can extend up to 30 years. With personal loan rates between 8% and 15%, if you borrow ₹5,00,000 and can pay ₹15,000 monthly at 10% interest, your tenure would be around 40 months. This calculation helps you plan debt repayment strategically, especially if you’re saving for milestones like a wedding or buying property in a Tier-1 city."
         },
