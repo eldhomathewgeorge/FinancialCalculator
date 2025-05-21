@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QuickFinCalc RD Calculator for India - Calculate Recurring Deposit maturity amount, monthly deposit, tenure, or interest rate with ease. Plan your savings effectively.">
+  <meta name="keywords" content="RD calculator India, recurring deposit calculator, calculate RD maturity amount, savings planning India">
+  <meta name="author" content="Your Name">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfincalc.in/rd-calculator.html">
+  <title>QuickFinCalc - RD Calculator for India</title>
+  <!-- Favicon and Web App Manifest -->
+  <link rel="icon" type="image/x-icon" href="./logos/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="./logos/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="./logos/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./logos/apple-touch-icon.png">
+  <link rel="manifest" href="./logos/site.webmanifest">
+  <meta name="theme-color" content="#1A2526">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AdSense Auto-Ads Code -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9605816809850366" crossorigin="anonymous"></script>
+  <!-- JSON-LD Structured Data for SoftwareApplication -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickFinCalc RD Calculator",
+      "description": "QuickFinCalc RD Calculator for India helps you calculate Recurring Deposit maturity amount, monthly deposit, tenure, or interest rate to plan your savings.",
+      "applicationCategory": "Financial Calculator",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "url": "https://quickfincalc.in/rd-calculator.html",
+      "datePublished": "2025-05-17",
+      "publisher": {
+        "@type": "Organization",
+        "name": "QuickFinCalc"
+      }
+    }
+  </script>
+  <!-- Custom CSS -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1A2526;
+      color: #F5F6F5;
+      font-family: 'Raleway', sans-serif;
+      line-height: 1.8;
+    }
+    .header {
+      background: linear-gradient(135deg, #1A2526 0%, #4A919E 100%);
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #F5F6F5;
+      margin-bottom: 4px;
+      margin-top: 0;
+    }
+    .header p {
+      font-size: 1rem;
+      color: #D4AF37;
+      font-weight: 300;
+      margin-bottom: 4px;
+    }
+    .navbar {
+      background: #E8ECEF;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #1A2526;
+      display: none;
+    }
+    .navbar-nav {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .navbar-nav .nav-link {
+      color: #1A2526;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      margin: 0 15px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #D4AF37;
+    }
+    .navbar-nav .nav-link.active {
+      color: #D4AF37;
+      background-color: #1A2526;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+    .container {
+      max-width: 1200px;
+      background: #F5F6F5;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+      margin: 20px auto;
+      animation: fadeIn 1s ease-in-out;
+      color: #1A2526;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .main-layout {
+      display: flex;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .calculator-column {
+      flex: 0 0 50%;
+      min-width: 0;
+      height: 100%;
+    }
+    .content-column {
+      flex: 0 0 50%;
+      background: #E8ECEF;
+      border-radius: 8px;
+      padding: 20px;
+      overflow-y: auto;
+      height: 100%;
+    }
+    .tab-pane {
+      padding: 20px 0;
+    }
+    .tab-description {
+      font-size: 0.95rem;
+      color: #4A919E;
+      margin-bottom: 20px;
+      font-style: italic;
+      text-align: center;
+    }
+    .form-label {
+      font-weight: 600;
+      color: #1A2526;
+    }
+    .input-group {
+      display: none;
+    }
+    .input-group>.form-control, .input-group>.form-floating, .input-group>.form-select {
+      position: relative;
+      flex: 1 1 auto;
+      width: 100%;
+      min-width: 0;
+    }
+    .form-control, .form-select {
+      background: #F5F6F5;
+      border: 1px solid #4A919E;
+      color: #1A2526;
+      border-radius: 8px;
+      width: 100%;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: #D4AF37;
+      box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #D4AF37 0%, #B89729 100%);
+      border: none;
+      color: #1A2526;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, #B89729 0%, #D4AF37 100%);
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #E8ECEF;
+      border-radius: 8px;
+      color: #1A2526;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .context-section {
+      color: #1A2526;
+    }
+    .context-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #4A919E;
+      margin-bottom: 15px;
+    }
+    .context-section p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .context-section ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+    .context-section li {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+    footer {
+      margin: 40px 0;
+      text-align: center;
+      color: #F5F6F5;
+      padding-top: 20px;
+      border-top: 1px solid #D4AF37;
+    }
+    footer a {
+      color: #D4AF37;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #F5F6F5;
+    }
+    a {
+      color: #4A919E;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #D4AF37;
+    }
+    @media (min-width: 992px) {
+      .content-column {
+        max-height: 700px;
+      }
+    }
+    @media (max-width: 991px) {
+      .main-layout {
+        flex-direction: column;
+      }
+      .calculator-column, .content-column {
+        flex: 1;
+      }
+      .content-column {
+        height: auto;
+      }
+    }
+    @media (max-width: 576px) {
+      .header h1 {
+        display: none; /* Hide the h1 on small screens to avoid duplication */
+      }
+      .header p {
+        font-size: 0.9rem;
+        margin: 0; /* Adjust margin for better spacing without h1 */
+      }
+      .container {
+        padding: 15px;
+        margin: 15px auto;
+      }
+      .tab-description {
+        font-size: 0.85rem;
+      }
+      .context-section h3 {
+        font-size: 1.3rem;
+      }
+      .context-section p, .context-section li {
+        font-size: 0.9rem;
+      }
+      .navbar-brand {
+        display: block;
+      }
+      .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+      }
+      .navbar-nav .nav-link {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h1>QuickFinCalc</h1>
+    <p>India’s Most Flexible Financial Calculators – EMI, FD, RD & More</p>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav class="navbar navbar-expand-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html">QuickFinCalc</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./emi-calculator.html">EMI Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./fd-calculator.html">FD Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./rd-calculator.html">RD Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./blog.html">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Calculator Column -->
+      <div class="calculator-column">
+        <!-- RD Calculator -->
+        <div class="tab-pane fade show active" id="rd">
+          <h2 class="text-center mb-4">RD Calculator</h2>
+          <p class="tab-description">Beyond Maturity – calculate Monthly Deposit, Tenure, or Interest Rate with ease!</p>
+          <div class="mb-3">
+            <label for="rd-calc-type" class="form-label">Calculation Type</label>
+            <select class="form-select" id="rd-calc-type">
+              <option value="maturity">MATURITY AMOUNT</option>
+              <option value="monthly-deposit">Monthly Deposit</option>
+              <option value="tenure">Tenure (Months)</option>
+              <option value="interest">Annual Interest Rate (%)</option>
+            </select>
+          </div>
+          <div id="rd-inputs">
+            <div class="mb-3 input-group rd-monthly-deposit-input">
+              <label for="rd-monthly-deposit" class="form-label">Monthly Deposit (₹)</label>
+              <input type="number" class="form-control" id="rd-monthly-deposit" placeholder="e.g., 5000">
+            </div>
+            <div class="mb-3 input-group rd-interest-input">
+              <label for="rd-interest" class="form-label">Interest Rate (% per annum)</label>
+              <input type="number" class="form-control" id="rd-interest" placeholder="e.g., 6.5" step="0.01">
+            </div>
+            <div class="mb-3 input-group rd-tenure-input">
+              <label for="rd-tenure" class="form-label">Tenure (Months)</label>
+              <input type="number" class="form-control" id="rd-tenure" placeholder="e.g., 60">
+            </div>
+            <div class="mb-3 input-group rd-maturity-input">
+              <label for="rd-maturity" class="form-label">Maturity Amount (₹)</label>
+              <input type="number" class="form-control" id="rd-maturity" placeholder="e.g., 345678">
+            </div>
+            <div class="mb-3 input-group rd-compounding-input">
+              <label for="rd-compounding" class="form-label">Compounding Frequency</label>
+              <select class="form-select" id="rd-compounding">
+                <option value="1">Yearly</option>
+                <option value="2">Half-Yearly</option>
+                <option value="4">Quarterly</option>
+                <option value="12" selected>Monthly</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary w-100" onclick="calculateRD()">Calculate</button>
+          <div id="rd-result" class="result"></div>
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="content-column">
+        <div id="context-section" class="context-section">
+          <h3 id="context-title">RD Calculator - MATURITY AMOUNT</h3>
+          <p id="context-description"></p>
+          <h4>Tips</h4>
+          <ul id="context-tips"></ul>
+          <h4>Context</h4>
+          <p id="context-context"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 QuickFinCalc - Premium Financial Calculators for India. For informational purposes only.</p>
+    <p>
+      <a href="https://twitter.com/yourusername" target="_blank">Twitter</a> |
+      <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+    </p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Calculator and Context Script -->
+  <script>
+    // Content for RD calculator dropdown options
+    const calculatorContent = {
+      rd: {
+        maturity: {
+          title: "RD Calculator - MATURITY AMOUNT",
+          description: "The MATURITY AMOUNT option calculates the final amount you’ll receive at the end of your Recurring Deposit term, based on your monthly deposit, annual interest rate, tenure in months, and compounding frequency. This helps you plan disciplined savings for future goals like buying a gadget, funding a vacation, or building an emergency fund.",
+          tips: [
+            "Start with a small monthly deposit you can sustain—e.g., ₹2,000 per month grows to ₹1.36 lakh in 5 years at 6.5% with quarterly compounding.",
+            "Choose post office RDs for safety—they offer 6.7% in 2025 for 5 years, backed by the government, ideal for conservative savers.",
+            "Consider tax on interest—RD interest is taxable; if your total income exceeds ₹5 lakh, plan for TDS deduction (10% if interest exceeds ₹40,000).",
+            "Opt for longer tenures to benefit from compounding—extending from 3 to 5 years on a ₹5,000 monthly RD at 6.5% increases maturity by ₹1 lakh.",
+            "Set up auto-debit for RD payments to avoid missing deposits; most banks like SBI charge a nominal penalty (₹1.5 per ₹100) for missed payments."
+          ],
+          context: "In India in May 2025, RD rates range from 6% to 7.5%, with banks like ICICI offering 6.9% for 5-year terms. For a ₹5,000 monthly RD at 6.5% for 60 months with quarterly compounding, you’d get ₹3,45,678 at maturity. This option suits salaried individuals aiming for disciplined savings, especially for short-to-medium-term goals amidst rising costs (e.g., a mid-range smartphone now costs ₹30,000-₹40,000)."
+        },
+        'monthly-deposit': {
+          title: "RD Calculator - Monthly Deposit",
+          description: "The Monthly Deposit option calculates the amount you need to save each month to reach a target maturity amount, based on the annual interest rate, tenure, and compounding frequency. This helps you budget your savings effectively to achieve specific financial goals without straining your monthly finances.",
+          tips: [
+            "Set a realistic target—like ₹2 lakh for a family vacation in 3 years—and calculate the monthly deposit needed at current RD rates.",
+            "Choose banks offering flexible RD amounts; HDFC allows RDs starting at ₹1,000 per month in 2025, making it accessible for small savers.",
+            "Increase your monthly deposit annually with income growth—e.g., a 10% salary hike can boost your RD contribution, accelerating your savings.",
+            "Avoid overcommitting—ensure your RD deposit doesn’t exceed 20% of your monthly savings to maintain financial flexibility for emergencies.",
+            "Explore RD schemes with bonus rates—some small finance banks like Jana offer 0.25% extra for RDs above ₹10,000 monthly in 2025."
+          ],
+          context: "In 2025, if you aim for ₹5,00,000 in 5 years at 6.5% interest with quarterly compounding, you’d need to deposit around ₹7,150 monthly. This option is ideal for planning goals like funding a child’s hobby classes (e.g., ₹2-3 lakh over 3 years) or saving for a festive celebration, helping you determine a feasible monthly savings amount amidst rising living costs (e.g., inflation at 4.5-5.5%)."
+        },
+        tenure: {
+          title: "RD Calculator - Tenure (Months)",
+          description: "The Tenure (Months) option calculates how long you need to save through a Recurring Deposit to reach a target maturity amount, based on your monthly deposit, annual interest rate, and compounding frequency. This helps you align your savings timeline with financial goals, ensuring you save enough by the time you need the funds.",
+          tips: [
+            "Align your RD tenure with specific goals, such as saving for a gadget in 2 years or a down payment in 5 years.",
+            "Check minimum and maximum tenure options—most banks in 2025 offer RDs from 6 months to 10 years; post office RDs are fixed at 5 years.",
+            "Consider early withdrawal penalties—banks like Axis charge 0.5% less interest if you break the RD early, so plan your tenure carefully.",
+            "Opt for flexible tenures if your goal timeline is uncertain; banks like Kotak allow tenure adjustments without penalty in 2025.",
+            "Monitor your savings progress annually—use RD calculators to adjust tenure if your financial goals change due to life events like a job switch."
+          ],
+          context: "In India in 2025, with RD rates at 6-7.5%, if you deposit ₹5,000 monthly at 6.5% (quarterly compounding) and need ₹2,00,000, your tenure would be around 37 months. This option is useful for short-term goals like saving for a laptop (₹80,000-₹1 lakh) or a family event, ensuring your savings mature at the right time amidst stable interest rates."
+        },
+        interest: {
+          title: "RD Calculator - Annual Interest Rate (%)",
+          description: "The Annual Interest Rate (%) option calculates the interest rate required for your Recurring Deposit to grow to a target maturity amount, based on your monthly deposit, tenure, and compounding frequency. This helps you evaluate RD schemes and choose the best rate to meet your savings goals efficiently.",
+          tips: [
+            "Compare RD rates across banks—small finance banks like Suryoday offer up to 7.5% in 2025, while public sector banks like PNB provide 6.5%.",
+            "Senior citizens can avail higher rates (0.5% extra); for example, SBI offers 7.2% for seniors on 5-year RDs in 2025.",
+            "Factor in TDS on interest—if your annual RD interest exceeds ₹40,000 (₹50,000 for seniors), banks deduct 10% TDS; plan your savings accordingly.",
+            "Look for promotional RD rates—banks like Canara often increase rates by 0.25% during festive seasons like Diwali in 2025.",
+            "Consider post-tax returns; a 6.5% RD for someone in the 20% tax bracket yields an effective 5.2% after tax, so adjust your expectations."
+          ],
+          context: "In May 2025, if you save ₹5,000 monthly for 60 months and want ₹3,50,000 at maturity with quarterly compounding, you’d need an annual interest rate of approximately 6.8%. This calculation helps you choose the best RD scheme, especially for disciplined savings goals like building a travel fund or saving for a child’s milestone, ensuring your investment grows at the right rate."
+        }
+      }
+    };
+
+    // Function to update the context section based on dropdown
+    function updateContext() {
+      const calcType = document.querySelector(`#rd-calc-type`).value;
+      const content = calculatorContent['rd'][calcType];
+
+      document.getElementById('context-title').textContent = content.title;
+      document.getElementById('context-description').textContent = content.description;
+
+      const tipsList = document.getElementById('context-tips');
+      tipsList.innerHTML = '';
+      content.tips.forEach(tip => {
+        const li = document.createElement('li');
+        li.textContent = tip;
+        tipsList.appendChild(li);
+      });
+
+      document.getElementById('context-context').textContent = content.context;
+    }
+
+    // Function to show/hide input fields based on calculation type
+    function updateInputFields() {
+      const calcType = document.querySelector(`#rd-calc-type`).value;
+
+      // Reset all inputs to hidden
+      document.querySelectorAll(`#rd-inputs .input-group`).forEach(input => {
+        input.style.display = 'none';
+      });
+
+      // Show relevant inputs based on calculation type
+      if (calcType === 'maturity') {
+        document.querySelector('.rd-monthly-deposit-input').style.display = 'block';
+        document.querySelector('.rd-interest-input').style.display = 'block';
+        document.querySelector('.rd-tenure-input').style.display = 'block';
+        document.querySelector('.rd-compounding-input').style.display = 'block';
+      } else if (calcType === 'tenure') {
+        document.querySelector('.rd-monthly-deposit-input').style.display = 'block';
+        document.querySelector('.rd-interest-input').style.display = 'block';
+        document.querySelector('.rd-maturity-input').style.display = 'block';
+        document.querySelector('.rd-compounding-input').style.display = 'block';
+      } else if (calcType === 'interest') {
+        document.querySelector('.rd-monthly-deposit-input').style.display = 'block';
+        document.querySelector('.rd-tenure-input').style.display = 'block';
+        document.querySelector('.rd-maturity-input').style.display = 'block';
+        document.querySelector('.rd-compounding-input').style.display = 'block';
+      } else if (calcType === 'monthly-deposit') {
+        document.querySelector('.rd-maturity-input').style.display = 'block';
+        document.querySelector('.rd-interest-input').style.display = 'block';
+        document.querySelector('.rd-tenure-input').style.display = 'block';
+        document.querySelector('.rd-compounding-input').style.display = 'block';
+      }
+    }
+
+    // Calculator Functions
+    function calculateRD() {
+      const calcType = document.getElementById('rd-calc-type').value;
+      const monthlyDeposit = parseFloat(document.getElementById('rd-monthly-deposit').value);
+      const interest = parseFloat(document.getElementById('rd-interest').value) / 100;
+      const tenure = parseFloat(document.getElementById('rd-tenure').value);
+      const maturity = parseFloat(document.getElementById('rd-maturity').value);
+      const compounding = parseFloat(document.getElementById('rd-compounding').value);
+      let result = '';
+
+      if (calcType === 'maturity') {
+        if (isNaN(monthlyDeposit) || isNaN(interest) || isNaN(tenure)) {
+          result = 'Please fill in all fields (Monthly Deposit, Interest Rate, Tenure).';
+        } else {
+          const ratePerPeriod = interest / compounding;
+          const totalPeriods = tenure;
+          let maturityAmount = 0;
+          for (let i = 1; i <= totalPeriods; i++) {
+            const remainingPeriods = totalPeriods - i;
+            const periodsPerCompounding = compounding;
+            const periodsToCompound = Math.floor(remainingPeriods / (12 / periodsPerCompounding));
+            const amountForThisDeposit = monthlyDeposit * Math.pow(1 + ratePerPeriod, periodsToCompound);
+            maturityAmount += amountForThisDeposit;
+          }
+          result = `Maturity Amount: ₹${maturityAmount.toFixed(2)}`;
+        }
+      } else if (calcType === 'monthly-deposit') {
+        if (isNaN(maturity) || isNaN(interest) || isNaN(tenure)) {
+          result = 'Please fill in all fields (Maturity Amount, Interest Rate, Tenure).';
+        } else {
+          const ratePerPeriod = interest / compounding;
+          const totalPeriods = tenure;
+          let futureValuePerDeposit = 0;
+          for (let i = 1; i <= totalPeriods; i++) {
+            const remainingPeriods = totalPeriods - i;
+            const periodsPerCompounding = compounding;
+            const periodsToCompound = Math.floor(remainingPeriods / (12 / periodsPerCompounding));
+            const factor = Math.pow(1 + ratePerPeriod, periodsToCompound);
+            futureValuePerDeposit += factor;
+          }
+          const monthlyDepositCalc = maturity / futureValuePerDeposit;
+          result = `Monthly Deposit: ₹${monthlyDepositCalc.toFixed(2)}`;
+        }
+      } else if (calcType === 'tenure') {
+        if (isNaN(monthlyDeposit) || isNaN(interest) || isNaN(maturity)) {
+          result = 'Please fill in all fields (Monthly Deposit, Interest Rate, Maturity Amount).';
+        } else {
+          const ratePerPeriod = interest / compounding;
+          let totalPeriods = 1;
+          let maturityAmount = 0;
+          while (maturityAmount < maturity) {
+            maturityAmount = 0;
+            for (let i = 1; i <= totalPeriods; i++) {
+              const remainingPeriods = totalPeriods - i;
+              const periodsPerCompounding = compounding;
+              const periodsToCompound = Math.floor(remainingPeriods / (12 / periodsPerCompounding));
+              const amountForThisDeposit = monthlyDeposit * Math.pow(1 + ratePerPeriod, periodsToCompound);
+              maturityAmount += amountForThisDeposit;
+            }
+            totalPeriods++;
+            if (totalPeriods > 1200) { // Prevent infinite loops
+              result = 'Unable to calculate tenure with given inputs.';
+              break;
+            }
+          }
+          totalPeriods--;
+          const years = Math.floor(totalPeriods / 12);
+          const months = totalPeriods % 12;
+          result = `Tenure: ${years} years and ${months} months`;
+        }
+      } else if (calcType === 'interest') {
+        if (isNaN(monthlyDeposit) || isNaN(maturity) || isNaN(tenure)) {
+          result = 'Please fill in all fields (Monthly Deposit, Maturity Amount, Tenure).';
+        } else {
+          let lowRate = 0;
+          let highRate = 50;
+          let annualRate = 0;
+          const totalPeriods = tenure;
+          for (let iteration = 0; iteration < 100; iteration++) {
+            annualRate = (lowRate + highRate) / 2;
+            const ratePerPeriod = annualRate / 100 / compounding;
+            let maturityAmount = 0;
+            for (let i = 1; i <= totalPeriods; i++) {
+              const remainingPeriods = totalPeriods - i;
+              const periodsPerCompounding = compounding;
+              const periodsToCompound = Math.floor(remainingPeriods / (12 / periodsPerCompounding));
+              const amountForThisDeposit = monthlyDeposit * Math.pow(1 + ratePerPeriod, periodsToCompound);
+              maturityAmount += amountForThisDeposit;
+            }
+            if (Math.abs(maturityAmount - maturity) < 0.01) break;
+            if (maturityAmount < maturity) {
+              lowRate = annualRate;
+            } else {
+              highRate = annualRate;
+            }
+          }
+          result = `Annual Interest Rate: ${annualRate.toFixed(2)}%`;
+        }
+      }
+      document.getElementById('rd-result').textContent = result;
+    }
+
+    // Event listeners for dropdown changes
+    document.querySelectorAll('.form-select').forEach(select => {
+      select.addEventListener('change', () => {
+        updateContext();
+        updateInputFields();
+      });
+    });
+
+    // Initialize context and input fields on page load
+    updateContext();
+    updateInputFields();
+
+    // Highlight the current page in the navigation menu
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href').split('/').pop();
+        if (linkPath === currentPath) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

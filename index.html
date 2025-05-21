@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="QuickFinCalc - Flexible EMI, FD, and RD Calculators for India. Calculate EMI, Loan Amount, Tenure, or Interest Rate in one tool. Plan your finances easily with our all-in-one financial calculators.">
-  <meta name="keywords" content="EMI calculator India, calculate loan amount from EMI, flexible financial calculator, FD calculator, RD calculator, calculate tenure from EMI, calculate interest rate from EMI, personal finance India">
+  <meta name="description" content="QuickFinCalc - Premium Financial Calculators for India. Calculate EMI, FD, RD, and more with ease. Plan your finances smarter with flexible tools.">
+  <meta name="keywords" content="financial calculators India, EMI calculator, FD calculator, RD calculator, investment planning">
   <meta name="author" content="Your Name">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://quickfincalc.in/">
-  <title>QuickFinCalc - Flexible EMI, FD, and RD Calculators for India</title>
+  <link rel="canonical" href="https://quickfincalc.in">
+  <title>QuickFinCalc - Premium Financial Calculators for India</title>
   <!-- Favicon and Web App Manifest -->
   <link rel="icon" type="image/x-icon" href="./logos/favicon.ico">
   <link rel="icon" type="image/svg+xml" href="./logos/favicon.svg">
@@ -22,26 +22,19 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- AdSense Auto-Ads Code -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9605816809850366" crossorigin="anonymous"></script>
-  <!-- JSON-LD Structured Data for SoftwareApplication -->
+  <!-- JSON-LD Structured Data for Organization -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "Organization",
       "name": "QuickFinCalc",
-      "description": "QuickFinCalc provides flexible financial calculators for India, including EMI, Fixed Deposit (FD), and Recurring Deposit (RD) calculators. Calculate EMI, loan amount, tenure, or interest rate effortlessly to plan your finances.",
-      "applicationCategory": "Financial Calculator",
-      "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      },
-      "url": "https://quickfincalc.in/",
-      "datePublished": "2025-05-17",
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuickFinCalc"
-      }
+      "url": "https://quickfincalc.in",
+      "logo": "https://quickfincalc.in/logos/favicon-96x96.png",
+      "description": "QuickFinCalc provides premium financial calculators for India, including EMI, FD, RD, and more to help users plan their finances smarter.",
+      "sameAs": [
+        "https://twitter.com/yourusername",
+        "https://linkedin.com/in/yourusername"
+      ]
     }
   </script>
   <!-- Custom CSS -->
@@ -56,7 +49,7 @@
     }
     .header {
       background: linear-gradient(135deg, #1A2526 0%, #4A919E 100%);
-      padding: 20px;
+      padding: 10px;
       text-align: center;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
@@ -64,34 +57,48 @@
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       color: #F5F6F5;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
       margin-top: 0;
     }
     .header p {
       font-size: 1rem;
       color: #D4AF37;
       font-weight: 300;
-      margin-bottom: 12px;
+      margin-bottom: 4px;
     }
-    .highlight-banner {
-      background: linear-gradient(135deg, #D4AF37 0%, #B89729 100%);
-      padding: 15px;
-      text-align: center;
-      margin-bottom: 15px;
+    .navbar {
+      background: #E8ECEF;
+      padding: 10px;
+      margin-bottom: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
-    .highlight-banner h2 {
+    .navbar-brand {
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
       color: #1A2526;
-      margin-bottom: 5px;
+      display: none;
     }
-    .highlight-banner p {
-      font-size: 0.9rem;
+    .navbar-nav {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .navbar-nav .nav-link {
       color: #1A2526;
-      font-weight: 500;
-      margin: 0;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      margin: 0 15px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #D4AF37;
+    }
+    .navbar-nav .nav-link.active {
+      color: #D4AF37;
+      background-color: #1A2526;
+      border-radius: 5px;
+      padding: 5px 10px;
     }
     .container {
       max-width: 1200px;
@@ -107,132 +114,59 @@
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-    .main-layout {
-      display: flex;
+    .welcome-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #4A919E;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .welcome-section p {
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
-      align-items: stretch;
     }
-    .calculator-column {
-      flex: 0 0 50%;
-      min-width: 0;
-      height: 100%;
-    }
-    .content-column {
-      flex: 0 0 50%;
+    .calculator-card {
       background: #E8ECEF;
       border-radius: 8px;
       padding: 20px;
-      overflow-y: auto;
-      height: 100%;
-    }
-    .nav-tabs {
-      display: flex;
-      justify-content: center;
-      flex-wrap: nowrap;
-      overflow-x: visible;
-      overflow-y: visible;
-    }
-    .nav-tabs .nav-link {
-      color: #1A2526;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      border: none;
-      background: transparent;
-      padding: 10px 20px;
-      transition: color 0.3s ease;
-      white-space: nowrap;
-    }
-    .nav-tabs .nav-link:hover {
-      color: #D4AF37;
-    }
-    .nav-tabs .nav-link.active {
-      color: #D4AF37;
-      border-bottom: 3px solid #D4AF37;
-      background: transparent;
-    }
-    .tab-pane {
-      padding: 20px 0;
-    }
-    .tab-description {
-      font-size: 0.95rem;
-      color: #4A919E;
-      margin-bottom: 20px;
-      font-style: italic;
       text-align: center;
-    }
-    .form-label {
-      font-weight: 600;
-      color: #1A2526;
-    }
-    .input-group {
-      display: none;
-    }
-    .input-group>.form-control, .input-group>.form-floating, .input-group>.form-select {
-      position: relative;
-      flex: 1 1 auto;
-      width: 100%;
-      min-width: 0;
-    }
-    .form-control, .form-select {
-      background: #F5F6F5;
-      border: 1px solid #4A919E;
-      color: #1A2526;
-      border-radius: 8px;
-      width: 100%;
-      padding: 0.375rem 0.75rem;
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.5;
-      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    }
-    .form-control:focus, .form-select:focus {
-      border-color: #D4AF37;
-      box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #D4AF37 0%, #B89729 100%);
-      border: none;
-      color: #1A2526;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      padding: 10px 20px;
-      border-radius: 8px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-      background: linear-gradient(135deg, #B89729 0%, #D4AF37 100%);
+    .calculator-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
     }
-    .result {
-      margin-top: 20px;
-      padding: 15px;
-      background: #E8ECEF;
-      border-radius: 8px;
-      color: #1A2526;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-    .context-section {
-      color: #1A2526;
-    }
-    .context-section h3 {
+    .calculator-card h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
       color: #4A919E;
-      margin-bottom: 15px;
-    }
-    .context-section p {
-      font-size: 1rem;
       margin-bottom: 10px;
     }
-    .context-section ul {
-      padding-left: 20px;
+    .calculator-card p {
+      font-size: 1rem;
+      color: #1A2526;
       margin-bottom: 15px;
     }
-    .context-section li {
-      font-size: 1rem;
-      margin-bottom: 5px;
+    .calculator-card a {
+      background: linear-gradient(135deg, #D4AF37 0%, #B89729 100%);
+      color: #1A2526;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .calculator-card a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, #B89729 0%, #D4AF37 100%);
     }
     footer {
       margin: 40px 0;
@@ -258,54 +192,39 @@
     a:hover {
       color: #D4AF37;
     }
-    @media (min-width: 992px) {
-      .content-column {
-        max-height: 700px;
-      }
-    }
-    @media (max-width: 991px) {
-      .main-layout {
-        flex-direction: column;
-      }
-      .calculator-column, .content-column {
-        flex: 1;
-      }
-      .content-column {
-        height: auto;
-      }
-    }
     @media (max-width: 576px) {
       .header h1 {
-        font-size: 1.8rem;
+        display: none; /* Hide the h1 on small screens to avoid duplication */
       }
       .header p {
         font-size: 0.9rem;
+        margin: 0; /* Adjust margin for better spacing without h1 */
       }
       .container {
         padding: 15px;
         margin: 15px auto;
       }
-      .highlight-banner {
-        padding: 10px;
+      .welcome-section h2 {
+        font-size: 1.8rem;
       }
-      .highlight-banner h2 {
+      .welcome-section p {
+        font-size: 1rem;
+      }
+      .calculator-card h3 {
         font-size: 1.3rem;
       }
-      .highlight-banner p {
-        font-size: 0.8rem;
-      }
-      .tab-description {
-        font-size: 0.85rem;
-      }
-      .nav-tabs .nav-link {
-        font-size: 0.85rem;
-        padding: 8px 12px;
-      }
-      .context-section h3 {
-        font-size: 1.3rem;
-      }
-      .context-section p, .context-section li {
+      .calculator-card p {
         font-size: 0.9rem;
+      }
+      .navbar-brand {
+        display: block;
+      }
+      .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+      }
+      .navbar-nav .nav-link {
+        margin: 10px 0;
       }
     }
   </style>
@@ -315,162 +234,64 @@
   <div class="header">
     <h1>QuickFinCalc</h1>
     <p>India’s Most Flexible Financial Calculators – EMI, FD, RD & More</p>
-    <a href="./blog.html" class="btn btn-primary">Visit Our Blog</a>
   </div>
+
+  <!-- Navigation Menu -->
+  <nav class="navbar navbar-expand-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html">QuickFinCalc</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./emi-calculator.html">EMI Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./fd-calculator.html">FD Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./rd-calculator.html">RD Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./blog.html">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
   <!-- Main Container -->
   <div class="container">
-    <!-- Highlight Banner -->
-    <div class="highlight-banner">
-      <h2>One Calculator, Endless Possibilities</h2>
-      <p>Calculate EMI, Loan Amount, Tenure, or Interest Rate – All in One Place!</p>
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+      <h2>Welcome to QuickFinCalc</h2>
+      <p>Discover India’s most flexible financial calculators to plan your EMI, FD, RD, and more. Make smarter financial decisions with ease.</p>
     </div>
 
-    <!-- Main Layout -->
-    <div class="main-layout">
-      <!-- Calculator Column -->
-      <div class="calculator-column">
-        <!-- Calculator Tabs -->
-        <ul class="nav nav-tabs" id="calcTabs" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="emi-tab" data-bs-toggle="tab" data-bs-target="#emi" type="button" role="tab" aria-controls="emi" aria-selected="true">EMI Calculator</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="fd-tab" data-bs-toggle="tab" data-bs-target="#fd" type="button" role="tab" aria-controls="fd" aria-selected="false">FD Calculator</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="rd-tab" data-bs-toggle="tab" data-bs-target="#rd" type="button" role="tab" aria-controls="rd" aria-selected="false">RD Calculator</button>
-          </li>
-        </ul>
-
-        <!-- Tab Content -->
-        <div class="tab-content" id="calcTabsContent">
-          <!-- EMI Calculator -->
-          <div class="tab-pane fade show active" id="emi" role="tabpanel" aria-labelledby="emi-tab">
-            <h2 class="text-center mb-4">EMI Calculator</h2>
-            <p class="tab-description">Not just EMI – calculate Loan Amount, Tenure, or Interest Rate with ease!</p>
-            <div class="mb-3">
-              <label for="emi-calc-type" class="form-label">Calculation Type</label>
-              <select class="form-select" id="emi-calc-type">
-                <option value="emi">EMI (MONTHLY PAYMENT)</option>
-                <option value="principal">Loan Amount</option>
-                <option value="tenure">Tenure (Months)</option>
-                <option value="interest">Annual Interest Rate (%)</option>
-              </select>
-            </div>
-            <div id="emi-inputs">
-              <div class="mb-3 input-group emi-principal-input">
-                <label for="emi-principal" class="form-label">Loan Amount (₹)</label>
-                <input type="number" class="form-control" id="emi-principal" placeholder="e.g., 500000">
-              </div>
-              <div class="mb-3 input-group emi-interest-input">
-                <label for="emi-interest" class="form-label">Interest Rate (% per annum)</label>
-                <input type="number" class="form-control" id="emi-interest" placeholder="e.g., 8.5" step="0.01">
-              </div>
-              <div class="mb-3 input-group emi-tenure-input">
-                <label for="emi-tenure" class="form-label">Tenure (Months)</label>
-                <input type="number" class="form-control" id="emi-tenure" placeholder="e.g., 60">
-              </div>
-              <div class="mb-3 input-group emi-emi-input">
-                <label for="emi-emi" class="form-label">EMI (₹)</label>
-                <input type="number" class="form-control" id="emi-emi" placeholder="e.g., 10250">
-              </div>
-            </div>
-            <button class="btn btn-primary w-100" onclick="calculateEMI()">Calculate</button>
-            <div id="emi-result" class="result"></div>
-          </div>
-
-          <!-- FD Calculator -->
-          <div class="tab-pane fade" id="fd" role="tabpanel" aria-labelledby="fd-tab">
-            <h2 class="text-center mb-4">FD Calculator</h2>
-            <p class="tab-description">Beyond Maturity – calculate Principal, Tenure, or Interest Rate effortlessly!</p>
-            <div class="mb-3">
-              <label for="fd-calc-type" class="form-label">Calculation Type</label>
-              <select class="form-select" id="fd-calc-type">
-                <option value="maturity">MATURITY AMOUNT</option>
-                <option value="principal">Principal</option>
-                <option value="tenure">Tenure (Years)</option>
-                <option value="interest">Annual Interest Rate (%)</option>
-              </select>
-            </div>
-            <div id="fd-inputs">
-              <div class="mb-3 input-group fd-principal-input">
-                <label for="fd-principal" class="form-label">Principal Amount (₹)</label>
-                <input type="number" class="form-control" id="fd-principal" placeholder="e.g., 500000">
-              </div>
-              <div class="mb-3 input-group fd-interest-input">
-                <label for="fd-interest" class="form-label">Interest Rate (% per annum)</label>
-                <input type="number" class="form-control" id="fd-interest" placeholder="e.g., 7" step="0.01">
-              </div>
-              <div class="mb-3 input-group fd-tenure-input">
-                <label for="fd-tenure" class="form-label">Tenure (Years)</label>
-                <input type="number" class="form-control" id="fd-tenure" placeholder="e.g., 5">
-              </div>
-              <div class="mb-3 input-group fd-maturity-input">
-                <label for="fd-maturity" class="form-label">Maturity Amount (₹)</label>
-                <input type="number" class="form-control" id="fd-maturity" placeholder="e.g., 708144">
-              </div>
-              <div class="mb-3 input-group fd-compounding-input">
-                <label for="fd-compounding" class="form-label">Compounding Frequency</label>
-                <select class="form-select" id="fd-compounding">
-                  <option value="1">Yearly</option>
-                  <option value="2">Half-Yearly</option>
-                  <option value="4">Quarterly</option>
-                  <option value="12">Monthly</option>
-                </select>
-              </div>
-            </div>
-            <button class="btn btn-primary w-100" onclick="calculateFD()">Calculate</button>
-            <div id="fd-result" class="result"></div>
-          </div>
-
-          <!-- RD Calculator -->
-          <div class="tab-pane fade" id="rd" role="tabpanel" aria-labelledby="rd-tab">
-            <h2 class="text-center mb-4">RD Calculator</h2>
-            <p class="tab-description">More than Maturity – calculate Monthly Deposit, Tenure, or Interest Rate with ease!</p>
-            <div class="mb-3">
-              <label for="rd-calc-type" class="form-label">Calculation Type</label>
-              <select class="form-select" id="rd-calc-type">
-                <option value="maturity">MATURITY AMOUNT</option>
-                <option value="installment">MONTHLY DEPOSIT</option>
-                <option value="tenure">Tenure (Months)</option>
-                <option value="interest">Annual Interest Rate (%)</option>
-              </select>
-            </div>
-            <div id="rd-inputs">
-              <div class="mb-3 input-group rd-installment-input">
-                <label for="rd-installment" class="form-label">Monthly Installment (₹)</label>
-                <input type="number" class="form-control" id="rd-installment" placeholder="e.g., 5000">
-              </div>
-              <div class="mb-3 input-group rd-interest-input">
-                <label for="rd-interest" class="form-label">Interest Rate (% per annum)</label>
-                <input type="number" class="form-control" id="rd-interest" placeholder="e.g., 6.5" step="0.01">
-              </div>
-              <div class="mb-3 input-group rd-tenure-input">
-                <label for="rd-tenure" class="form-label">Tenure (Months)</label>
-                <input type="number" class="form-control" id="rd-tenure" placeholder="e.g., 60">
-              </div>
-              <div class="mb-3 input-group rd-maturity-input">
-                <label for="rd-maturity" class="form-label">Maturity Amount (₹)</label>
-                <input type="number" class="form-control" id="rd-maturity" placeholder="e.g., 348500">
-              </div>
-            </div>
-            <button class="btn btn-primary w-100" onclick="calculateRD()">Calculate</button>
-            <div id="rd-result" class="result"></div>
-          </div>
-        </div>
+    <!-- Calculator Cards -->
+    <div class="calculator-grid">
+      <!-- EMI Calculator -->
+      <div class="calculator-card">
+        <h3>EMI Calculator</h3>
+        <p>Calculate your monthly loan EMI, interest rate, loan amount, or tenure with precision.</p>
+        <a href="./emi-calculator.html">Calculate Now</a>
       </div>
-
-      <!-- Content Column -->
-      <div class="content-column">
-        <div id="context-section" class="context-section">
-          <h3 id="context-title">EMI Calculator - EMI (MONTHLY PAYMENT)</h3>
-          <p id="context-description"></p>
-          <h4>Tips</h4>
-          <ul id="context-tips"></ul>
-          <h4>Context</h4>
-          <p id="context-context"></p>
-        </div>
+      <!-- FD Calculator -->
+      <div class="calculator-card">
+        <h3>FD Calculator</h3>
+        <p>Compute your Fixed Deposit maturity amount, principal, tenure, or interest rate effortlessly.</p>
+        <a href="./fd-calculator.html">Calculate Now</a>
+      </div>
+      <!-- RD Calculator -->
+      <div class="calculator-card">
+        <h3>RD Calculator</h3>
+        <p>Plan your Recurring Deposit savings by calculating maturity, monthly deposit, or tenure.</p>
+        <a href="./rd-calculator.html">Calculate Now</a>
       </div>
     </div>
   </div>
@@ -486,456 +307,19 @@
 
   <!-- Bootstrap JS -->
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Calculator and Context Script -->
+  <!-- Highlight the current page in the navigation menu -->
   <script>
-    // Content for each calculator and dropdown option
-    const calculatorContent = {
-      emi: {
-        emi: {
-          title: "EMI Calculator - EMI (MONTHLY PAYMENT)",
-          description: "This EMI (Monthly Payment) option calculates your Equated Monthly Installment for a loan based on the loan amount, annual interest rate, and tenure in months. It’s a crucial tool for budgeting your monthly expenses, helping you understand how much you’ll need to set aside for loan repayment while balancing other financial commitments like savings and daily expenses.",
-          tips: [
-            "Aim to keep your EMI below 40% of your monthly income to avoid financial strain, especially if you have other loans or expenses.",
-            "Explore prepayment options if your income increases; even small additional payments can significantly reduce the total interest paid over the loan term.",
-            "Consider using an EMI calculator before applying for a loan to negotiate better terms with lenders, as knowing your EMI upfront can give you leverage.",
-            "Account for potential rate hikes by the Reserve Bank of India (RBI); if the repo rate increases, your loan’s floating interest rate might rise, increasing your EMI.",
-            "Check for foreclosure charges—some banks in India charge 2-4% of the outstanding principal if you close the loan early."
-          ],
-          context: "In May 2025, with India’s inflation rate hovering around 4.5-5.5% and the RBI repo rate at approximately 6.5%, personal loan interest rates typically range between 8% and 15%. For example, a ₹5,00,000 loan at 10% for 5 years results in an EMI of ₹10,624. This calculation is particularly useful for planning major expenses like buying a two-wheeler, funding a wedding, or renovating your home, ensuring you don’t overstretch your finances."
-        },
-        principal: {
-          title: "EMI Calculator - Loan Amount",
-          description: "The Loan Amount option helps you determine the maximum loan you can borrow based on the EMI you can afford, the annual interest rate, and the tenure in months. This is ideal for understanding your borrowing capacity, ensuring you don’t take on a loan that could strain your finances, and aligning your loan with your repayment ability.",
-          tips: [
-            "Ensure your EMI fits within your monthly budget—ideally under 40% of your income—to maintain financial stability and avoid default.",
-            "A credit score above 750 can help you secure lower interest rates, allowing you to borrow a larger loan amount at the same EMI.",
-            "Factor in additional costs like loan processing fees (0.5-2% of the loan amount) and insurance premiums when calculating your borrowing needs.",
-            "Consider your Debt-to-Income (DTI) ratio; Indian banks prefer a DTI below 50%, so account for existing EMIs when calculating a new loan.",
-            "Explore government-backed loan schemes like the Pradhan Mantri Awas Yojana (PMAY) for home loans, which offer subsidies for first-time buyers in 2025."
-          ],
-          context: "In India in 2025, banks typically assess loan eligibility using your income, credit score, and existing liabilities. For instance, if you can afford a ₹20,000 EMI at 9% interest for 5 years, you can borrow approximately ₹9,64,000. This calculation is useful for planning purchases like a car or funding higher education, ensuring you borrow only what you can comfortably repay amidst rising living costs in urban areas like Mumbai or Bengaluru."
-        },
-        tenure: {
-          title: "EMI Calculator - Tenure (Months)",
-          description: "The Tenure (Months) option calculates how long it will take to repay your loan based on the loan amount, annual interest rate, and the EMI you can afford. This helps you plan your loan repayment timeline, ensuring it aligns with your financial goals, such as clearing debt before a major life event like retirement or a child’s education.",
-          tips: [
-            "Opt for a tenure that keeps your EMI affordable but doesn’t stretch the loan too long, as longer tenures increase the total interest paid.",
-            "If the calculated tenure exceeds your repayment capacity, consider increasing your EMI or making periodic prepayments to shorten the loan term.",
-            "Be mindful of floating interest rates; if the RBI increases rates in 2025, your EMI or tenure might increase for adjustable-rate loans.",
-            "Use a slightly higher interest rate in your calculations to buffer against potential rate hikes, especially for long-term loans like home loans.",
-            "Check if your lender allows tenure adjustments without penalties—some Indian banks offer flexibility to extend or shorten tenures based on your financial situation"
-          ],
-          context: "In 2025, loan tenures in India vary widely: personal loans typically range from 1 to 5 years, while home loans can extend up to 30 years. With personal loan rates between 8% and 15%, if you borrow ₹5,00,000 and can pay ₹15,000 monthly at 10% interest, your tenure would be around 40 months. This calculation helps you plan debt repayment strategically, especially if you’re saving for milestones like a wedding or buying property in a Tier-1 city."
-        },
-        interest: {
-          title: "EMI Calculator - Annual Interest Rate (%)",
-          description: "The Annual Interest Rate (%) option calculates the interest rate you’re effectively paying on a loan based on the loan amount, tenure, and EMI. This is useful for comparing loan offers, understanding the true cost of borrowing, and negotiating better rates with lenders to minimize your interest burden.",
-          tips: [
-            "Compare interest rates across multiple lenders—public sector banks like SBI often offer lower rates (8-10%) compared to private banks (10-15%) in 2025.",
-            "Negotiate with your lender; a strong credit score (750+) and stable income can help you secure a rate reduction of 0.25-0.5%.",
-            "Consider fixed vs. floating rates: fixed rates provide stability, while floating rates might decrease if the RBI cuts rates in late 2025.",
-            "Account for hidden costs like processing fees or prepayment penalties, which can effectively increase your borrowing cost beyond the stated interest rate.",
-            "Look into government schemes like the Credit Guarantee Fund Trust for Micro and Small Enterprises (CGTMSE) for business loans, which might offer competitive rates."
-          ],
-          context: "In May 2025, with personal loan rates in India averaging 8-15%, knowing your effective interest rate can help you make informed decisions. For example, if you borrow ₹5,00,000 for 5 years and pay an EMI of ₹12,000, your annual interest rate would be around 13.5%. This calculation is particularly useful when comparing loan offers from banks like HDFC or fintech lenders like Bajaj Finance, ensuring you choose the most cost-effective option for your needs."
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href').split('/').pop();
+        if (linkPath === currentPath) {
+          link.classList.add('active');
         }
-      },
-      fd: {
-        maturity: {
-          title: "FD Calculator - MATURITY AMOUNT",
-          description: "The MATURITY AMOUNT option calculates the final amount you’ll receive at the end of your Fixed Deposit term, factoring in the principal amount, annual interest rate, tenure in years, and compounding frequency. This helps you plan your investments with certainty, knowing exactly how much your savings will grow over time for future expenses or financial goals.",
-          tips: [
-            "Choose quarterly or monthly compounding over yearly to maximize your returns, as more frequent compounding increases the effective yield.",
-            "Explore special FD schemes in 2025, like SBI’s Amrit Kalash (400 days at 7.1%) or HDFC’s Senior Citizen Care FD offering up to 7.75% for seniors.",
-            "Consider tax implications—FD interest is taxable as per your income slab; use Form 15G/15H if your income is below the taxable limit to avoid TDS.",
-            "Ladder your FDs by splitting your investment across different tenures (e.g., 1, 3, 5 years) to ensure liquidity and capture higher rates over time.",
-            "Monitor inflation rates (currently 4.5-5.5% in 2025); ensure your FD rate exceeds inflation to preserve the real value of your returns."
-          ],
-          context: "In India in May 2025, FD rates range from 6% to 8%, with small finance banks like Ujjivan offering up to 8% for 3-5 year tenures. For a ₹5,00,000 FD at 7% for 5 years with quarterly compounding, you’d receive ₹7,08,144 at maturity. This option is ideal for risk-averse investors planning for goals like funding a child’s education or a family vacation, offering guaranteed returns amidst volatile equity markets."
-        },
-        principal: {
-          title: "FD Calculator - Principal",
-          description: "The Principal option determines the initial amount you need to invest in a Fixed Deposit to achieve a specific maturity amount, based on the annual interest rate, tenure, and compounding frequency. This is perfect for goal-based investing, helping you allocate the right amount today to meet future financial needs like a down payment or retirement corpus.",
-          tips: [
-            "Set a realistic maturity target based on your financial goals, such as saving for a car down payment (₹2-3 lakh) or a wedding (₹10-15 lakh).",
-            "Choose banks with high credit ratings (e.g., AAA by CRISIL) for safety; in 2025, banks like ICICI and SBI are highly rated for FD security.",
-            "Account for inflation when setting your target—India’s inflation is around 4.5-5.5% in 2025, so your maturity amount should grow beyond this rate.",
-            "Consider splitting your principal across multiple FDs to diversify tenures and rates, ensuring both liquidity and growth.",
-            "Use auto-renewal options for FDs to lock in rates, especially if you anticipate a dip in FD rates due to potential RBI rate cuts in late 2025."
-          ],
-          context: "In 2025, if you aim for a ₹7,00,000 corpus in 5 years at 7% interest with quarterly compounding, you’d need to invest around ₹4,96,000 today. This calculation is useful for planning major life events, such as funding a child’s higher education (e.g., engineering fees in India can range from ₹5-10 lakh) or building an emergency fund, ensuring you start with the right principal to meet your goals."
-        },
-        tenure: {
-          title: "FD Calculator - Tenure (Years)",
-          description: "The Tenure (Years) option calculates how long you need to invest in a Fixed Deposit to reach a target maturity amount, based on your principal, annual interest rate, and compounding frequency. This helps you align your investment timeline with financial goals, ensuring your money grows to the desired amount by the time you need it.",
-          tips: [
-            "Align your FD tenure with specific goals, like saving for a home down payment in 3 years or a child’s education in 7 years.",
-            "Opt for longer tenures if FD rates are high (e.g., 7-8% in 2025) to lock in returns, especially if rates are expected to fall with RBI policy changes.",
-            "Check for premature withdrawal penalties—most banks charge 0.5-1% less interest if you break the FD early, so plan your tenure carefully.",
-            "Consider tax-saving FDs with a 5-year lock-in under Section 80C, offering tax deductions up to ₹1.5 lakh while earning interest.",
-            "Review special tenure schemes—e.g., Bank of Baroda’s 399-day FD at 7.15% in 2025 provides higher returns for short-term investments."
-          ],
-          context: "In India in 2025, with FD rates between 6% and 8%, if you invest ₹5,00,000 at 7% (quarterly compounding) and need ₹7,00,000, your tenure would be around 4 years and 11 months. This option is helpful for planning investments for milestones like buying a car (e.g., a mid-range SUV costing ₹15 lakh) or funding a sabbatical, ensuring your savings mature at the right time."
-        },
-        interest: {
-          title: "FD Calculator - Annual Interest Rate (%)",
-          description: "The Annual Interest Rate (%) option calculates the interest rate required for your Fixed Deposit to grow from the principal to a target maturity amount over a specified tenure, considering the compounding frequency. This helps you evaluate FD offers and choose the best rate to meet your financial goals efficiently.",
-          tips: [
-            "Compare rates across banks—small finance banks like Equitas offer up to 8% in 2025, while public sector banks like SBI provide 6.5-7%.",
-            "Senior citizens can avail higher rates (0.5% extra); for example, HDFC Bank offers 7.75% for seniors on 5-year FDs in 2025.",
-            "Factor in TDS on interest—if your annual FD interest exceeds ₹40,000 (₹50,000 for seniors), banks deduct 10% TDS; plan your investments accordingly.",
-            "Look for festive season offers—banks like ICICI often increase FD rates by 0.25-0.5% during Diwali or New Year in 2025.",
-            "Consider post-tax returns; a 7% FD for someone in the 30% tax bracket yields an effective 4.9% after tax, so adjust your expectations."
-          ],
-          context: "In May 2025, if you invest ₹5,00,000 in an FD for 5 years and want ₹7,00,000 at maturity with quarterly compounding, you’d need an annual interest rate of approximately 6.9%. This calculation helps you choose the best FD scheme, especially when planning for low-risk goals like building a retirement corpus or saving for a family event, ensuring your investment grows at the right rate."
-        }
-      },
-      rd: {
-        maturity: {
-          title: "RD Calculator - MATURITY AMOUNT",
-          description: "The MATURITY AMOUNT option calculates the final amount you’ll receive at the end of your Recurring Deposit term, based on your monthly deposit, annual interest rate, and tenure in months. This is ideal for disciplined savers looking to build a corpus over time for short- to medium-term goals, with the assurance of guaranteed returns.",
-          tips: [
-            "Choose a longer tenure (e.g., 3-5 years) to maximize compounding benefits, as RD interest typically compounds quarterly in India.",
-            "Compare RD rates—Post Office RDs offer 6.7% for 5 years in 2025, while banks like Axis Bank provide 7% for similar tenures.",
-            "Set up auto-debit for RD payments to ensure consistency and avoid penalties, which can be 1-2% of the interest earned if you miss installments.",
-            "Plan for tax on interest; if you’re in the 20% tax bracket, a 6.5% RD effectively yields 5.2% after tax—adjust your savings goal accordingly.",
-            "Use RDs for specific goals like saving for a gadget (₹50,000-₹1 lakh) or a down payment for a two-wheeler (₹20,000-₹50,000)."
-          ],
-          context: "In India in May 2025, a ₹5,000 monthly RD at 6.5% for 5 years matures to ₹3,48,500, with ₹48,500 as interest. This option is popular among salaried individuals in cities like Delhi or Chennai for saving towards goals like funding a family vacation (e.g., a ₹3-4 lakh trip to Kerala) or buying a high-end smartphone, offering a safe and predictable growth path amidst rising inflation."
-        },
-        installment: {
-          title: "RD Calculator - MONTHLY DEPOSIT",
-          description: "The MONTHLY DEPOSIT option calculates the monthly amount you need to save in a Recurring Deposit to reach a target maturity amount, based on the annual interest rate and tenure in months. This helps you budget your savings plan, ensuring you save the right amount each month to achieve your financial goals without overburdening your finances.",
-          tips: [
-            "Keep your monthly deposit affordable—aim for 10-20% of your monthly income to maintain financial flexibility for other expenses.",
-            "Start small if you’re new to saving; many banks allow RDs as low as ₹500/month, so you can gradually increase your contribution.",
-            "Take advantage of RD flexibility—tenures range from 6 months to 10 years, allowing you to save for both short-term and long-term goals.",
-            "Monitor your RD’s progress using online banking tools; most banks like SBI provide RD calculators and trackers in 2025.",
-            "Consider pairing your RD with a savings account offering high interest (e.g., Kotak 811 at 4%) to park surplus funds while saving via RD."
-          ],
-          context: "In 2025, if you want ₹2,00,000 in 3 years at 6% interest, you’d need to deposit around ₹5,050 monthly in an RD. This option is useful for young professionals in India saving for milestones like a wedding (costing ₹5-10 lakh in Tier-2 cities) or a professional course (e.g., a ₹1-2 lakh certification), helping you build a habit of disciplined saving amidst rising costs."
-        },
-        tenure: {
-          title: "RD Calculator - Tenure (Months)",
-          description: "The Tenure (Months) option calculates how many months you need to save in a Recurring Deposit to reach a target maturity amount, based on your monthly deposit and annual interest rate. This helps you plan your savings timeline, ensuring your money grows to the desired amount by the time you need it for a specific goal.",
-          tips: [
-            "Choose a tenure that aligns with your goal’s timeline, such as 24 months for a gadget or 60 months for a car down payment.",
-            "If the tenure seems too long, increase your monthly deposit slightly to shorten the duration without compromising your budget.",
-            "Check for premature closure penalties—most banks reduce the interest rate by 0.5-1% if you withdraw early, so plan your tenure carefully.",
-            "Explore Post Office RDs for longer tenures (5-10 years), which offer 6.7% in 2025 and are backed by government security.",
-            "Account for life changes like job switches or salary hikes; you can adjust your RD tenure or deposit amount with most banks in India."
-          ],
-          context: "In India in 2025, with RD rates at 5.75-7%, if you save ₹5,000 monthly at 6.5% and need ₹3,50,000, your tenure would be around 60 months. This option is ideal for planning savings for goals like funding a child’s summer camp (₹50,000-₹1 lakh) or a home appliance purchase (e.g., a ₹70,000 smart TV), ensuring you save systematically over the right period."
-        },
-        interest: {
-          title: "RD Calculator - Annual Interest Rate (%)",
-          description: "The Annual Interest Rate (%) option calculates the interest rate required for your Recurring Deposit to grow to a target maturity amount, based on your monthly deposit and tenure in months. This helps you evaluate RD schemes and choose the best rate to achieve your savings goals efficiently, ensuring optimal growth for your money.",
-          tips: [
-            "Compare RD rates across banks—private banks like HDFC offer 7% for 3-5 year tenures in 2025, while Post Office RDs provide 6.7%.",
-            "Look for promotional offers—banks like ICICI often increase RD rates by 0.25% during festive seasons like Diwali in 2025.",
-            "Consider tax on interest; if your total RD interest exceeds ₹40,000 annually, banks deduct 10% TDS—use Form 15G/15H if eligible.",
-            "Pair your RD with other investments like mutual funds for diversification, as RD rates (5.75-7%) might not always beat inflation (4.5-5.5%).",
-            "Check if your bank offers higher rates for senior citizens or women depositors—some banks provide an additional 0.25-0.5% in 2025."
-          ],
-          context: "In May 2025, if you save ₹5,000 monthly for 5 years and want ₹3,50,000 at maturity, you’d need an annual interest rate of around 6.7%. This option helps you select the best RD scheme for goals like saving for a family event (e.g., a ₹2-3 lakh anniversary celebration) or an emergency fund, ensuring your savings grow at a rate that meets your expectations in a stable, low-risk manner."
-        }
-      }
-    };
-
-    // Function to update the context section based on selected calculator and dropdown
-    function updateContext() {
-      const activeTab = document.querySelector('.nav-tabs .nav-link.active').id.split('-')[0]; // e.g., 'emi', 'fd', 'rd'
-      const calcType = document.querySelector(`#${activeTab}-calc-type`).value; // e.g., 'emi', 'tenure'
-      const content = calculatorContent[activeTab][calcType];
-
-      document.getElementById('context-title').textContent = content.title;
-      document.getElementById('context-description').textContent = content.description;
-
-      const tipsList = document.getElementById('context-tips');
-      tipsList.innerHTML = '';
-      content.tips.forEach(tip => {
-        const li = document.createElement('li');
-        li.textContent = tip;
-        tipsList.appendChild(li);
-      });
-
-      document.getElementById('context-context').textContent = content.context;
-    }
-
-    // Function to show/hide input fields based on calculation type
-    function updateInputFields() {
-      const activeTab = document.querySelector('.nav-tabs .nav-link.active').id.split('-')[0]; // e.g., 'emi', 'fd', 'rd'
-      const calcType = document.querySelector(`#${activeTab}-calc-type`).value;
-
-      // Reset all inputs to hidden
-      document.querySelectorAll(`#${activeTab}-inputs .input-group`).forEach(input => {
-        input.style.display = 'none';
-      });
-
-      // Show relevant inputs based on calculator and calculation type
-      if (activeTab === 'emi') {
-        if (calcType === 'emi') {
-          document.querySelector('.emi-principal-input').style.display = 'block';
-          document.querySelector('.emi-interest-input').style.display = 'block';
-          document.querySelector('.emi-tenure-input').style.display = 'block';
-        } else if (calcType === 'tenure') {
-          document.querySelector('.emi-principal-input').style.display = 'block';
-          document.querySelector('.emi-interest-input').style.display = 'block';
-          document.querySelector('.emi-emi-input').style.display = 'block';
-        } else if (calcType === 'interest') {
-          document.querySelector('.emi-principal-input').style.display = 'block';
-          document.querySelector('.emi-tenure-input').style.display = 'block';
-          document.querySelector('.emi-emi-input').style.display = 'block';
-        } else if (calcType === 'principal') {
-          document.querySelector('.emi-emi-input').style.display = 'block';
-          document.querySelector('.emi-interest-input').style.display = 'block';
-          document.querySelector('.emi-tenure-input').style.display = 'block';
-        }
-      } else if (activeTab === 'fd') {
-        if (calcType === 'maturity') {
-          document.querySelector('.fd-principal-input').style.display = 'block';
-          document.querySelector('.fd-interest-input').style.display = 'block';
-          document.querySelector('.fd-tenure-input').style.display = 'block';
-          document.querySelector('.fd-compounding-input').style.display = 'block';
-        } else if (calcType === 'tenure') {
-          document.querySelector('.fd-principal-input').style.display = 'block';
-          document.querySelector('.fd-interest-input').style.display = 'block';
-          document.querySelector('.fd-maturity-input').style.display = 'block';
-          document.querySelector('.fd-compounding-input').style.display = 'block';
-        } else if (calcType === 'interest') {
-          document.querySelector('.fd-principal-input').style.display = 'block';
-          document.querySelector('.fd-tenure-input').style.display = 'block';
-          document.querySelector('.fd-maturity-input').style.display = 'block';
-          document.querySelector('.fd-compounding-input').style.display = 'block';
-        } else if (calcType === 'principal') {
-          document.querySelector('.fd-maturity-input').style.display = 'block';
-          document.querySelector('.fd-interest-input').style.display = 'block';
-          document.querySelector('.fd-tenure-input').style.display = 'block';
-          document.querySelector('.fd-compounding-input').style.display = 'block';
-        }
-      } else if (activeTab === 'rd') {
-        if (calcType === 'maturity') {
-          document.querySelector('.rd-installment-input').style.display = 'block';
-          document.querySelector('.rd-interest-input').style.display = 'block';
-          document.querySelector('.rd-tenure-input').style.display = 'block';
-        } else if (calcType === 'tenure') {
-          document.querySelector('.rd-installment-input').style.display = 'block';
-          document.querySelector('.rd-interest-input').style.display = 'block';
-          document.querySelector('.rd-maturity-input').style.display = 'block';
-        } else if (calcType === 'interest') {
-          document.querySelector('.rd-installment-input').style.display = 'block';
-          document.querySelector('.rd-tenure-input').style.display = 'block';
-          document.querySelector('.rd-maturity-input').style.display = 'block';
-        } else if (calcType === 'installment') {
-          document.querySelector('.rd-maturity-input').style.display = 'block';
-          document.querySelector('.rd-interest-input').style.display = 'block';
-          document.querySelector('.rd-tenure-input').style.display = 'block';
-        }
-      }
-    }
-
-    // Event listeners for tab and dropdown changes
-    document.querySelectorAll('.nav-link').forEach(tab => {
-      tab.addEventListener('shown.bs.tab', () => {
-        updateContext();
-        updateInputFields();
       });
     });
-
-    document.querySelectorAll('.form-select').forEach(select => {
-      select.addEventListener('change', () => {
-        updateContext();
-        updateInputFields();
-      });
-    });
-
-    // Calculator Functions
-    function calculateEMI() {
-      const calcType = document.getElementById('emi-calc-type').value;
-      const principal = parseFloat(document.getElementById('emi-principal').value);
-      const interest = parseFloat(document.getElementById('emi-interest').value) / 1200; // Monthly rate
-      const tenure = parseFloat(document.getElementById('emi-tenure').value);
-      const emi = parseFloat(document.getElementById('emi-emi').value);
-      let result = '';
-
-      if (calcType === 'emi') {
-        if (isNaN(principal) || isNaN(interest) || isNaN(tenure)) {
-          result = 'Please fill in all fields (Loan Amount, Interest Rate, Tenure).';
-        } else {
-          const emiCalc = principal * interest * (Math.pow(1 + interest, tenure) / (Math.pow(1 + interest, tenure) - 1));
-          result = `Monthly EMI: ₹${emiCalc.toFixed(2)}`;
-        }
-      } else if (calcType === 'tenure') {
-        if (isNaN(principal) || isNaN(interest) || isNaN(emi)) {
-          result = 'Please fill in all fields (Loan Amount, Interest Rate, EMI).';
-        } else {
-          const tenureCalc = Math.log(emi / (emi - principal * interest)) / Math.log(1 + interest);
-          const years = Math.floor(tenureCalc / 12);
-          const months = Math.round(tenureCalc % 12);
-          result = `Tenure: ${years} years and ${months} months`;
-        }
-      } else if (calcType === 'interest') {
-        if (isNaN(principal) || isNaN(tenure) || isNaN(emi)) {
-          result = 'Please fill in all fields (Loan Amount, Tenure, EMI).';
-        } else {
-          let rateGuess = 0.01 / 12; // Start with 1% annual rate (monthly)
-          let rateHigh = 1; // 100% annual rate (monthly)
-          let rateLow = 0;
-          let maxIterations = 1000;
-          let iteration = 0;
-
-          while (iteration < maxIterations) {
-            const emiCalc = principal * rateGuess * (Math.pow(1 + rateGuess, tenure) / (Math.pow(1 + rateGuess, tenure) - 1));
-            if (Math.abs(emiCalc - emi) < 0.01) break;
-
-            if (emiCalc > emi) {
-              rateHigh = rateGuess;
-            } else {
-              rateLow = rateGuess;
-            }
-            rateGuess = (rateHigh + rateLow) / 2;
-            iteration++;
-          }
-          const annualRate = rateGuess * 12 * 100;
-          result = `Annual Interest Rate: ${annualRate.toFixed(2)}%`;
-        }
-      } else if (calcType === 'principal') {
-        if (isNaN(emi) || isNaN(interest) || isNaN(tenure)) {
-          result = 'Please fill in all fields (EMI, Interest Rate, Tenure).';
-        } else {
-          const principalCalc = emi * (Math.pow(1 + interest, tenure) - 1) / (interest * Math.pow(1 + interest, tenure));
-          result = `Loan Amount: ₹${principalCalc.toFixed(2)}`;
-        }
-      }
-      document.getElementById('emi-result').textContent = result;
-    }
-
-    function calculateFD() {
-      const calcType = document.getElementById('fd-calc-type').value;
-      const principal = parseFloat(document.getElementById('fd-principal').value);
-      const interest = parseFloat(document.getElementById('fd-interest').value) / 100;
-      const tenure = parseFloat(document.getElementById('fd-tenure').value);
-      const maturity = parseFloat(document.getElementById('fd-maturity').value);
-      const compounding = parseInt(document.getElementById('fd-compounding').value);
-      let result = '';
-
-      if (calcType === 'maturity') {
-        if (isNaN(principal) || isNaN(interest) || isNaN(tenure)) {
-          result = 'Please fill in all fields (Principal Amount, Interest Rate, Tenure).';
-        } else {
-          const n = compounding;
-          const t = tenure;
-          const r = interest / n;
-          const maturityCalc = principal * Math.pow(1 + r, n * t);
-          result = `Maturity Amount: ₹${maturityCalc.toFixed(2)}`;
-        }
-      } else if (calcType === 'tenure') {
-        if (isNaN(principal) || isNaN(interest) || isNaN(maturity)) {
-          result = 'Please fill in all fields (Principal Amount, Interest Rate, Maturity Amount).';
-        } else {
-          const n = compounding;
-          const r = interest / n;
-          const tenureCalc = Math.log(maturity / principal) / (n * Math.log(1 + r));
-          const years = Math.floor(tenureCalc);
-          const months = Math.round((tenureCalc % 1) * 12);
-          result = `Tenure: ${years} years and ${months} months`;
-        }
-      } else if (calcType === 'interest') {
-        if (isNaN(principal) || isNaN(tenure) || isNaN(maturity)) {
-          result = 'Please fill in all fields (Principal Amount, Tenure, Maturity Amount).';
-        } else {
-          const n = compounding;
-          const t = tenure;
-          const r = (Math.pow(maturity / principal, 1 / (n * t)) - 1);
-          const annualRate = r * n * 100;
-          result = `Annual Interest Rate: ${annualRate.toFixed(2)}%`;
-        }
-      } else if (calcType === 'principal') {
-        if (isNaN(maturity) || isNaN(interest) || isNaN(tenure)) {
-          result = 'Please fill in all fields (Maturity Amount, Interest Rate, Tenure).';
-        } else {
-          const n = compounding;
-          const t = tenure;
-          const r = interest / n;
-          const principalCalc = maturity / Math.pow(1 + r, n * t);
-          result = `Principal Amount: ₹${principalCalc.toFixed(2)}`;
-        }
-      }
-      document.getElementById('fd-result').textContent = result;
-    }
-
-    function calculateRD() {
-      const calcType = document.getElementById('rd-calc-type').value;
-      const installment = parseFloat(document.getElementById('rd-installment').value);
-      const interest = parseFloat(document.getElementById('rd-interest').value) / 1200; // Monthly rate
-      const tenure = parseFloat(document.getElementById('rd-tenure').value);
-      const maturity = parseFloat(document.getElementById('rd-maturity').value);
-      let result = '';
-
-      if (calcType === 'maturity') {
-        if (isNaN(installment) || isNaN(interest) || isNaN(tenure)) {
-          result = 'Please fill in all fields (Monthly Installment, Interest Rate, Tenure).';
-        } else {
-          const n = tenure;
-          const r = interest;
-          const maturityCalc = installment * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
-          result = `Maturity Amount: ₹${maturityCalc.toFixed(2)}`;
-        }
-      } else if (calcType === 'tenure') {
-        if (isNaN(installment) || isNaN(interest) || isNaN(maturity)) {
-          result = 'Please fill in all fields (Monthly Installment, Interest Rate, Maturity Amount).';
-        } else {
-          let n = 1;
-          while (true) {
-            const maturityCalc = installment * ((Math.pow(1 + interest, n) - 1) / interest) * (1 + interest);
-            if (maturityCalc >= maturity || n > 1200) break; // Cap at 100 years
-            n++;
-          }
-          const years = Math.floor(n / 12);
-          const months = n % 12;
-          result = `Tenure: ${years} years and ${months} months`;
-        }
-      } else if (calcType === 'interest') {
-        if (isNaN(installment) || isNaN(tenure) || isNaN(maturity)) {
-          result = 'Please fill in all fields (Monthly Installment, Tenure, Maturity Amount).';
-        } else {
-          let rateGuess = 0.01 / 12; // Start with 1% annual rate (monthly)
-          let rateHigh = 1; // 100% annual rate (monthly)
-          let rateLow = 0;
-          let maxIterations = 1000;
-          let iteration = 0;
-
-          while (iteration < maxIterations) {
-            const maturityCalc = installment * ((Math.pow(1 + rateGuess, tenure) - 1) / rateGuess) * (1 + rateGuess);
-            if (Math.abs(maturityCalc - maturity) < 0.01) break;
-
-            if (maturityCalc > maturity) {
-              rateHigh = rateGuess;
-            } else {
-              rateLow = rateGuess;
-            }
-            rateGuess = (rateHigh + rateLow) / 2;
-            iteration++;
-          }
-          const annualRate = rateGuess * 12 * 100;
-          result = `Annual Interest Rate: ${annualRate.toFixed(2)}%`;
-        }
-      } else if (calcType === 'installment') {
-        if (isNaN(maturity) || isNaN(interest) || isNaN(tenure)) {
-          result = 'Please fill in all fields (Maturity Amount, Interest Rate, Tenure).';
-        } else {
-          const n = tenure;
-          const r = interest;
-          const installmentCalc = maturity / (((Math.pow(1 + r, n) - 1) / r) * (1 + r));
-          result = `Monthly Installment: ₹${installmentCalc.toFixed(2)}`;
-        }
-      }
-      document.getElementById('rd-result').textContent = result;
-    }
-
-    // Initialize context and input fields on page load
-    updateContext();
-    updateInputFields();
   </script>
 </body>
 </html>

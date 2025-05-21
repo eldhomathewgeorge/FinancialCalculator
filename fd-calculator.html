@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QuickFinCalc FD Calculator for India - Calculate Fixed Deposit maturity amount, principal, tenure, or interest rate with ease. Plan your investments effectively.">
+  <meta name="keywords" content="FD calculator India, fixed deposit calculator, calculate FD maturity amount, investment planning India">
+  <meta name="author" content="Your Name">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfincalc.in/fd-calculator.html">
+  <title>QuickFinCalc - FD Calculator for India</title>
+  <!-- Favicon and Web App Manifest -->
+  <link rel="icon" type="image/x-icon" href="./logos/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="./logos/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="./logos/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./logos/apple-touch-icon.png">
+  <link rel="manifest" href="./logos/site.webmanifest">
+  <meta name="theme-color" content="#1A2526">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AdSense Auto-Ads Code -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9605816809850366" crossorigin="anonymous"></script>
+  <!-- JSON-LD Structured Data for SoftwareApplication -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickFinCalc FD Calculator",
+      "description": "QuickFinCalc FD Calculator for India helps you calculate Fixed Deposit maturity amount, principal, tenure, or interest rate to plan your investments.",
+      "applicationCategory": "Financial Calculator",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "url": "https://quickfincalc.in/fd-calculator.html",
+      "datePublished": "2025-05-17",
+      "publisher": {
+        "@type": "Organization",
+        "name": "QuickFinCalc"
+      }
+    }
+  </script>
+  <!-- Custom CSS -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1A2526;
+      color: #F5F6F5;
+      font-family: 'Raleway', sans-serif;
+      line-height: 1.8;
+    }
+    .header {
+      background: linear-gradient(135deg, #1A2526 0%, #4A919E 100%);
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #F5F6F5;
+      margin-bottom: 4px;
+      margin-top: 0;
+    }
+    .header p {
+      font-size: 1rem;
+      color: #D4AF37;
+      font-weight: 300;
+      margin-bottom: 4px;
+    }
+    .navbar {
+      background: #E8ECEF;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #1A2526;
+      display: none;
+    }
+    .navbar-nav {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .navbar-nav .nav-link {
+      color: #1A2526;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      margin: 0 15px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #D4AF37;
+    }
+    .navbar-nav .nav-link.active {
+      color: #D4AF37;
+      background-color: #1A2526;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+    .container {
+      max-width: 1200px;
+      background: #F5F6F5;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+      margin: 20px auto;
+      animation: fadeIn 1s ease-in-out;
+      color: #1A2526;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .main-layout {
+      display: flex;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .calculator-column {
+      flex: 0 0 50%;
+      min-width: 0;
+      height: 100%;
+    }
+    .content-column {
+      flex: 0 0 50%;
+      background: #E8ECEF;
+      border-radius: 8px;
+      padding: 20px;
+      overflow-y: auto;
+      height: 100%;
+    }
+    .tab-pane {
+      padding: 20px 0;
+    }
+    .tab-description {
+      font-size: 0.95rem;
+      color: #4A919E;
+      margin-bottom: 20px;
+      font-style: italic;
+      text-align: center;
+    }
+    .form-label {
+      font-weight: 600;
+      color: #1A2526;
+    }
+    .input-group {
+      display: none;
+    }
+    .input-group>.form-control, .input-group>.form-floating, .input-group>.form-select {
+      position: relative;
+      flex: 1 1 auto;
+      width: 100%;
+      min-width: 0;
+    }
+    .form-control, .form-select {
+      background: #F5F6F5;
+      border: 1px solid #4A919E;
+      color: #1A2526;
+      border-radius: 8px;
+      width: 100%;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: #D4AF37;
+      box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #D4AF37 0%, #B89729 100%);
+      border: none;
+      color: #1A2526;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, #B89729 0%, #D4AF37 100%);
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #E8ECEF;
+      border-radius: 8px;
+      color: #1A2526;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .context-section {
+      color: #1A2526;
+    }
+    .context-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #4A919E;
+      margin-bottom: 15px;
+    }
+    .context-section p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .context-section ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+    .context-section li {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+    footer {
+      margin: 40px 0;
+      text-align: center;
+      color: #F5F6F5;
+      padding-top: 20px;
+      border-top: 1px solid #D4AF37;
+    }
+    footer a {
+      color: #D4AF37;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #F5F6F5;
+    }
+    a {
+      color: #4A919E;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #D4AF37;
+    }
+    @media (min-width: 992px) {
+      .content-column {
+        max-height: 700px;
+      }
+    }
+    @media (max-width: 991px) {
+      .main-layout {
+        flex-direction: column;
+      }
+      .calculator-column, .content-column {
+        flex: 1;
+      }
+      .content-column {
+        height: auto;
+      }
+    }
+    @media (max-width: 576px) {
+      .header h1 {
+        display: none; /* Hide the h1 on small screens to avoid duplication */
+      }
+      .header p {
+        font-size: 0.9rem;
+        margin: 0; /* Adjust margin for better spacing without h1 */
+      }
+      .container {
+        padding: 15px;
+        margin: 15px auto;
+      }
+      .tab-description {
+        font-size: 0.85rem;
+      }
+      .context-section h3 {
+        font-size: 1.3rem;
+      }
+      .context-section p, .context-section li {
+        font-size: 0.9rem;
+      }
+      .navbar-brand {
+        display: block;
+      }
+      .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+      }
+      .navbar-nav .nav-link {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h1>QuickFinCalc</h1>
+    <p>India’s Most Flexible Financial Calculators – EMI, FD, RD & More</p>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav class="navbar navbar-expand-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html">QuickFinCalc</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./emi-calculator.html">EMI Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./fd-calculator.html">FD Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./rd-calculator.html">RD Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./blog.html">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Calculator Column -->
+      <div class="calculator-column">
+        <!-- FD Calculator -->
+        <div class="tab-pane fade show active" id="fd">
+          <h2 class="text-center mb-4">FD Calculator</h2>
+          <p class="tab-description">Beyond Maturity – calculate Principal, Tenure, or Interest Rate effortlessly!</p>
+          <div class="mb-3">
+            <label for="fd-calc-type" class="form-label">Calculation Type</label>
+            <select class="form-select" id="fd-calc-type">
+              <option value="maturity">MATURITY AMOUNT</option>
+              <option value="principal">Principal</option>
+              <option value="tenure">Tenure (Years)</option>
+              <option value="interest">Annual Interest Rate (%)</option>
+            </select>
+          </div>
+          <div id="fd-inputs">
+            <div class="mb-3 input-group fd-principal-input">
+              <label for="fd-principal" class="form-label">Principal Amount (₹)</label>
+              <input type="number" class="form-control" id="fd-principal" placeholder="e.g., 500000">
+            </div>
+            <div class="mb-3 input-group fd-interest-input">
+              <label for="fd-interest" class="form-label">Interest Rate (% per annum)</label>
+              <input type="number" class="form-control" id="fd-interest" placeholder="e.g., 7" step="0.01">
+            </div>
+            <div class="mb-3 input-group fd-tenure-input">
+              <label for="fd-tenure" class="form-label">Tenure (Years)</label>
+              <input type="number" class="form-control" id="fd-tenure" placeholder="e.g., 5">
+            </div>
+            <div class="mb-3 input-group fd-maturity-input">
+              <label for="fd-maturity" class="form-label">Maturity Amount (₹)</label>
+              <input type="number" class="form-control" id="fd-maturity" placeholder="e.g., 708144">
+            </div>
+            <div class="mb-3 input-group fd-compounding-input">
+              <label for="fd-compounding" class="form-label">Compounding Frequency</label>
+              <select class="form-select" id="fd-compounding">
+                <option value="1">Yearly</option>
+                <option value="2">Half-Yearly</option>
+                <option value="4">Quarterly</option>
+                <option value="12">Monthly</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary w-100" onclick="calculateFD()">Calculate</button>
+          <div id="fd-result" class="result"></div>
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="content-column">
+        <div id="context-section" class="context-section">
+          <h3 id="context-title">FD Calculator - MATURITY AMOUNT</h3>
+          <p id="context-description"></p>
+          <h4>Tips</h4>
+          <ul id="context-tips"></ul>
+          <h4>Context</h4>
+          <p id="context-context"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 QuickFinCalc - Premium Financial Calculators for India. For informational purposes only.</p>
+    <p>
+      <a href="https://twitter.com/yourusername" target="_blank">Twitter</a> |
+      <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+    </p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Calculator and Context Script -->
+  <script>
+    // Content for FD calculator dropdown options
+    const calculatorContent = {
+      fd: {
+        maturity: {
+          title: "FD Calculator - MATURITY AMOUNT",
+          description: "The MATURITY AMOUNT option calculates the final amount you’ll receive at the end of your Fixed Deposit term, factoring in the principal amount, annual interest rate, tenure in years, and compounding frequency. This helps you plan your investments with certainty, knowing exactly how much your savings will grow over time for future expenses or financial goals.",
+          tips: [
+            "Choose quarterly or monthly compounding over yearly to maximize your returns, as more frequent compounding increases the effective yield.",
+            "Explore special FD schemes in 2025, like SBI’s Amrit Kalash (400 days at 7.1%) or HDFC’s Senior Citizen Care FD offering up to 7.75% for seniors.",
+            "Consider tax implications—FD interest is taxable as per your income slab; use Form 15G/15H if your income is below the taxable limit to avoid TDS.",
+            "Ladder your FDs by splitting your investment across different tenures (e.g., 1, 3, 5 years) to ensure liquidity and capture higher rates over time.",
+            "Monitor inflation rates (currently 4.5-5.5% in 2025); ensure your FD rate exceeds inflation to preserve the real value of your returns."
+          ],
+          context: "In India in May 2025, FD rates range from 6% to 8%, with small finance banks like Ujjivan offering up to 8% for 3-5 year tenures. For a ₹5,00,000 FD at 7% for 5 years with quarterly compounding, you’d receive ₹7,08,144 at maturity. This option is ideal for risk-averse investors planning for goals like funding a child’s education or a family vacation, offering guaranteed returns amidst volatile equity markets."
+        },
+        principal: {
+          title: "FD Calculator - Principal",
+          description: "The Principal option determines the initial amount you need to invest in a Fixed Deposit to achieve a specific maturity amount, based on the annual interest rate, tenure, and compounding frequency. This is perfect for goal-based investing, helping you allocate the right amount today to meet future financial needs like a down payment or retirement corpus.",
+          tips: [
+            "Set a realistic maturity target based on your financial goals, such as saving for a car down payment (₹2-3 lakh) or a wedding (₹10-15 lakh).",
+            "Choose banks with high credit ratings (e.g., AAA by CRISIL) for safety; in 2025, banks like ICICI and SBI are highly rated for FD security.",
+            "Account for inflation when setting your target—India’s inflation is around 4.5-5.5% in 2025, so your maturity amount should grow beyond this rate.",
+            "Consider splitting your principal across multiple FDs to diversify tenures and rates, ensuring both liquidity and growth.",
+            "Use auto-renewal options for FDs to lock in rates, especially if you anticipate a dip in FD rates due to potential RBI rate cuts in late 2025."
+          ],
+          context: "In 2025, if you aim for a ₹7,00,000 corpus in 5 years at 7% interest with quarterly compounding, you’d need to invest around ₹4,96,000 today. This calculation is useful for planning major life events, such as funding a child’s higher education (e.g., engineering fees in India can range from ₹5-10 lakh) or building an emergency fund, ensuring you start with the right principal to meet your goals."
+        },
+        tenure: {
+          title: "FD Calculator - Tenure (Years)",
+          description: "The Tenure (Years) option calculates how long you need to invest in a Fixed Deposit to reach a target maturity amount, based on your principal, annual interest rate, and compounding frequency. This helps you align your investment timeline with financial goals, ensuring your money grows to the desired amount by the time you need it.",
+          tips: [
+            "Align your FD tenure with specific goals, like saving for a home down payment in 3 years or a child’s education in 7 years.",
+            "Opt for longer tenures if FD rates are high (e.g., 7-8% in 2025) to lock in returns, especially if rates are expected to fall with RBI policy changes.",
+            "Check for premature withdrawal penalties—most banks charge 0.5-1% less interest if you break the FD early, so plan your tenure carefully.",
+            "Consider tax-saving FDs with a 5-year lock-in under Section 80C, offering tax deductions up to ₹1.5 lakh while earning interest.",
+            "Review special tenure schemes—e.g., Bank of Baroda’s 399-day FD at 7.15% in 2025 provides higher returns for short-term investments."
+          ],
+          context: "In India in 2025, with FD rates between 6% and 8%, if you invest ₹5,00,000 at 7% (quarterly compounding) and need ₹7,00,000, your tenure would be around 4 years and 11 months. This option is helpful for planning investments for milestones like buying a car (e.g., a mid-range SUV costing ₹15 lakh) or funding a sabbatical, ensuring your savings mature at the right time."
+        },
+        interest: {
+          title: "FD Calculator - Annual Interest Rate (%)",
+          description: "The Annual Interest Rate (%) option calculates the interest rate required for your Fixed Deposit to grow from the principal to a target maturity amount over a specified tenure, considering the compounding frequency. This helps you evaluate FD offers and choose the best rate to meet your financial goals efficiently.",
+          tips: [
+            "Compare rates across banks—small finance banks like Equitas offer up to 8% in 2025, while public sector banks like SBI provide 6.5-7%.",
+            "Senior citizens can avail higher rates (0.5% extra); for example, HDFC Bank offers 7.75% for seniors on 5-year FDs in 2025.",
+            "Factor in TDS on interest—if your annual FD interest exceeds ₹40,000 (₹50,000 for seniors), banks deduct 10% TDS; plan your investments accordingly.",
+            "Look for festive season offers—banks like ICICI often increase FD rates by 0.25-0.5% during Diwali or New Year in 2025.",
+            "Consider post-tax returns; a 7% FD for someone in the 30% tax bracket yields an effective 4.9% after tax, so adjust your expectations."
+          ],
+          context: "In May 2025, if you invest ₹5,00,000 in an FD for 5 years and want ₹7,00,000 at maturity with quarterly compounding, you’d need an annual interest rate of approximately 6.9%. This calculation helps you choose the best FD scheme, especially when planning for low-risk goals like building a retirement corpus or saving for a family event, ensuring your investment grows at the right rate."
+        }
+      }
+    };
+
+    // Function to update the context section based on dropdown
+    function updateContext() {
+      const calcType = document.querySelector(`#fd-calc-type`).value;
+      const content = calculatorContent['fd'][calcType];
+
+      document.getElementById('context-title').textContent = content.title;
+      document.getElementById('context-description').textContent = content.description;
+
+      const tipsList = document.getElementById('context-tips');
+      tipsList.innerHTML = '';
+      content.tips.forEach(tip => {
+        const li = document.createElement('li');
+        li.textContent = tip;
+        tipsList.appendChild(li);
+      });
+
+      document.getElementById('context-context').textContent = content.context;
+    }
+
+    // Function to show/hide input fields based on calculation type
+    function updateInputFields() {
+      const calcType = document.querySelector(`#fd-calc-type`).value;
+
+      // Reset all inputs to hidden
+      document.querySelectorAll(`#fd-inputs .input-group`).forEach(input => {
+        input.style.display = 'none';
+      });
+
+      // Show relevant inputs based on calculation type
+      if (calcType === 'maturity') {
+        document.querySelector('.fd-principal-input').style.display = 'block';
+        document.querySelector('.fd-interest-input').style.display = 'block';
+        document.querySelector('.fd-tenure-input').style.display = 'block';
+        document.querySelector('.fd-compounding-input').style.display = 'block';
+      } else if (calcType === 'tenure') {
+        document.querySelector('.fd-principal-input').style.display = 'block';
+        document.querySelector('.fd-interest-input').style.display = 'block';
+        document.querySelector('.fd-maturity-input').style.display = 'block';
+        document.querySelector('.fd-compounding-input').style.display = 'block';
+      } else if (calcType === 'interest') {
+        document.querySelector('.fd-principal-input').style.display = 'block';
+        document.querySelector('.fd-tenure-input').style.display = 'block';
+        document.querySelector('.fd-maturity-input').style.display = 'block';
+        document.querySelector('.fd-compounding-input').style.display = 'block';
+      } else if (calcType === 'principal') {
+        document.querySelector('.fd-maturity-input').style.display = 'block';
+        document.querySelector('.fd-interest-input').style.display = 'block';
+        document.querySelector('.fd-tenure-input').style.display = 'block';
+        document.querySelector('.fd-compounding-input').style.display = 'block';
+      }
+    }
+
+    // Calculator Functions
+    function calculateFD() {
+      const calcType = document.getElementById('fd-calc-type').value;
+      const principal = parseFloat(document.getElementById('fd-principal').value);
+      const interest = parseFloat(document.getElementById('fd-interest').value) / 100;
+      const tenure = parseFloat(document.getElementById('fd-tenure').value);
+      const maturity = parseFloat(document.getElementById('fd-maturity').value);
+      const compounding = parseFloat(document.getElementById('fd-compounding').value);
+      let result = '';
+
+      if (calcType === 'maturity') {
+        if (isNaN(principal) || isNaN(interest) || isNaN(tenure)) {
+          result = 'Please fill in all fields (Principal Amount, Interest Rate, Tenure).';
+        } else {
+          const totalPeriods = tenure * compounding;
+          const ratePerPeriod = interest / compounding;
+          const maturityAmount = principal * Math.pow(1 + ratePerPeriod, totalPeriods);
+          result = `Maturity Amount: ₹${maturityAmount.toFixed(2)}`;
+        }
+      } else if (calcType === 'principal') {
+        if (isNaN(maturity) || isNaN(interest) || isNaN(tenure)) {
+          result = 'Please fill in all fields (Maturity Amount, Interest Rate, Tenure).';
+        } else {
+          const totalPeriods = tenure * compounding;
+          const ratePerPeriod = interest / compounding;
+          const principalCalc = maturity / Math.pow(1 + ratePerPeriod, totalPeriods);
+          result = `Principal Amount: ₹${principalCalc.toFixed(2)}`;
+        }
+      } else if (calcType === 'tenure') {
+        if (isNaN(principal) || isNaN(interest) || isNaN(maturity)) {
+          result = 'Please fill in all fields (Principal Amount, Interest Rate, Maturity Amount).';
+        } else {
+          const ratePerPeriod = interest / compounding;
+          const totalPeriods = Math.log(maturity / principal) / Math.log(1 + ratePerPeriod);
+          const tenureCalc = totalPeriods / compounding;
+          const years = Math.floor(tenureCalc);
+          const months = Math.round((tenureCalc - years) * 12);
+          result = `Tenure: ${years} years and ${months} months`;
+        }
+      } else if (calcType === 'interest') {
+        if (isNaN(principal) || isNaN(maturity) || isNaN(tenure)) {
+          result = 'Please fill in all fields (Principal Amount, Maturity Amount, Tenure).';
+        } else {
+          const totalPeriods = tenure * compounding;
+          const ratePerPeriod = Math.pow(maturity / principal, 1 / totalPeriods) - 1;
+          const annualRate = ratePerPeriod * compounding * 100;
+          result = `Annual Interest Rate: ${annualRate.toFixed(2)}%`;
+        }
+      }
+      document.getElementById('fd-result').textContent = result;
+    }
+
+    // Event listeners for dropdown changes
+    document.querySelectorAll('.form-select').forEach(select => {
+      select.addEventListener('change', () => {
+        updateContext();
+        updateInputFields();
+      });
+    });
+
+    // Initialize context and input fields on page load
+    updateContext();
+    updateInputFields();
+
+    // Highlight the current page in the navigation menu
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href').split('/').pop();
+        if (linkPath === currentPath) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

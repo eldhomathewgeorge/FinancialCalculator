@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QuickFinCalc EMI Calculator for India - Calculate your loan EMI, interest rate, loan amount, or tenure with ease. Plan your finances smarter.">
+  <meta name="keywords" content="EMI calculator India, loan EMI calculator, calculate loan EMI, financial planning India">
+  <meta name="author" content="Your Name">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quickfincalc.in/emi-calculator.html">
+  <title>QuickFinCalc - EMI Calculator for India</title>
+  <!-- Favicon and Web App Manifest -->
+  <link rel="icon" type="image/x-icon" href="./logos/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="./logos/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="./logos/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./logos/apple-touch-icon.png">
+  <link rel="manifest" href="./logos/site.webmanifest">
+  <meta name="theme-color" content="#1A2526">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AdSense Auto-Ads Code -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9605816809850366" crossorigin="anonymous"></script>
+  <!-- JSON-LD Structured Data for SoftwareApplication -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickFinCalc EMI Calculator",
+      "description": "QuickFinCalc EMI Calculator for India helps you calculate your loan EMI, interest rate, loan amount, or tenure to plan your finances smarter.",
+      "applicationCategory": "Financial Calculator",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "url": "https://quickfincalc.in/emi-calculator.html",
+      "datePublished": "2025-05-17",
+      "publisher": {
+        "@type": "Organization",
+        "name": "QuickFinCalc"
+      }
+    }
+  </script>
+  <!-- Custom CSS -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1A2526;
+      color: #F5F6F5;
+      font-family: 'Raleway', sans-serif;
+      line-height: 1.8;
+    }
+    .header {
+      background: linear-gradient(135deg, #1A2526 0%, #4A919E 100%);
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #F5F6F5;
+      margin-bottom: 4px;
+      margin-top: 0;
+    }
+    .header p {
+      font-size: 1rem;
+      color: #D4AF37;
+      font-weight: 300;
+      margin-bottom: 4px;
+    }
+    .navbar {
+      background: #E8ECEF;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #1A2526;
+      display: none;
+    }
+    .navbar-nav {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .navbar-nav .nav-link {
+      color: #1A2526;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      margin: 0 15px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #D4AF37;
+    }
+    .navbar-nav .nav-link.active {
+      color: #D4AF37;
+      background-color: #1A2526;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+    .container {
+      max-width: 1200px;
+      background: #F5F6F5;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+      margin: 20px auto;
+      animation: fadeIn 1s ease-in-out;
+      color: #1A2526;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .main-layout {
+      display: flex;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .calculator-column {
+      flex: 0 0 50%;
+      min-width: 0;
+      height: 100%;
+    }
+    .content-column {
+      flex: 0 0 50%;
+      background: #E8ECEF;
+      border-radius: 8px;
+      padding: 20px;
+      overflow-y: auto;
+      height: 100%;
+    }
+    .tab-pane {
+      padding: 20px 0;
+    }
+    .tab-description {
+      font-size: 0.95rem;
+      color: #4A919E;
+      margin-bottom: 20px;
+      font-style: italic;
+      text-align: center;
+    }
+    .form-label {
+      font-weight: 600;
+      color: #1A2526;
+    }
+    .input-group {
+      display: none;
+    }
+    .input-group>.form-control, .input-group>.form-floating, .input-group>.form-select {
+      position: relative;
+      flex: 1 1 auto;
+      width: 100%;
+      min-width: 0;
+    }
+    .form-control, .form-select {
+      background: #F5F6F5;
+      border: 1px solid #4A919E;
+      color: #1A2526;
+      border-radius: 8px;
+      width: 100%;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: #D4AF37;
+      box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #D4AF37 0%, #B89729 100%);
+      border: none;
+      color: #1A2526;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, #B89729 0%, #D4AF37 100%);
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #E8ECEF;
+      border-radius: 8px;
+      color: #1A2526;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .context-section {
+      color: #1A2526;
+    }
+    .context-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #4A919E;
+      margin-bottom: 15px;
+    }
+    .context-section p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .context-section ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+    .context-section li {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+    footer {
+      margin: 40px 0;
+      text-align: center;
+      color: #F5F6F5;
+      padding-top: 20px;
+      border-top: 1px solid #D4AF37;
+    }
+    footer a {
+      color: #D4AF37;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #F5F6F5;
+    }
+    a {
+      color: #4A919E;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #D4AF37;
+    }
+    @media (min-width: 992px) {
+      .content-column {
+        max-height: 700px;
+      }
+    }
+    @media (max-width: 991px) {
+      .main-layout {
+        flex-direction: column;
+      }
+      .calculator-column, .content-column {
+        flex: 1;
+      }
+      .content-column {
+        height: auto;
+      }
+    }
+    @media (max-width: 576px) {
+      .header h1 {
+        display: none; /* Hide the h1 on small screens to avoid duplication */
+      }
+      .header p {
+        font-size: 0.9rem;
+        margin: 0; /* Adjust margin for better spacing without h1 */
+      }
+      .container {
+        padding: 15px;
+        margin: 15px auto;
+      }
+      .tab-description {
+        font-size: 0.85rem;
+      }
+      .context-section h3 {
+        font-size: 1.3rem;
+      }
+      .context-section p, .context-section li {
+        font-size: 0.9rem;
+      }
+      .navbar-brand {
+        display: block;
+      }
+      .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+      }
+      .navbar-nav .nav-link {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h1>QuickFinCalc</h1>
+    <p>India’s Most Flexible Financial Calculators – EMI, FD, RD & More</p>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav class="navbar navbar-expand-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html">QuickFinCalc</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./emi-calculator.html">EMI Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./fd-calculator.html">FD Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./rd-calculator.html">RD Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./blog.html">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Calculator Column -->
+      <div class="calculator-column">
+        <!-- EMI Calculator -->
+        <div class="tab-pane fade show active" id="emi">
+          <h2 class="text-center mb-4">EMI Calculator</h2>
+          <p class="tab-description">Beyond EMI – calculate Loan Amount, Tenure, or Interest Rate with ease!</p>
+          <div class="mb-3">
+            <label for="emi-calc-type" class="form-label">Calculation Type</label>
+            <select class="form-select" id="emi-calc-type">
+              <option value="emi">EMI</option>
+              <option value="loan-amount">Loan Amount</option>
+              <option value="tenure">Tenure (Months)</option>
+              <option value="interest">Interest Rate (%)</option>
+            </select>
+          </div>
+          <div id="emi-inputs">
+            <div class="mb-3 input-group emi-loan-amount-input">
+              <label for="emi-loan-amount" class="form-label">Loan Amount (₹)</label>
+              <input type="number" class="form-control" id="emi-loan-amount" placeholder="e.g., 500000">
+            </div>
+            <div class="mb-3 input-group emi-interest-input">
+              <label for="emi-interest" class="form-label">Interest Rate (% per annum)</label>
+              <input type="number" class="form-control" id="emi-interest" placeholder="e.g., 8.5" step="0.01">
+            </div>
+            <div class="mb-3 input-group emi-tenure-input">
+              <label for="emi-tenure" class="form-label">Tenure (Months)</label>
+              <input type="number" class="form-control" id="emi-tenure" placeholder="e.g., 60">
+            </div>
+            <div class="mb-3 input-group emi-emi-input">
+              <label for="emi-emi" class="form-label">EMI (₹)</label>
+              <input type="number" class="form-control" id="emi-emi" placeholder="e.g., 10250">
+            </div>
+          </div>
+          <button class="btn btn-primary w-100" onclick="calculateEMI()">Calculate</button>
+          <div id="emi-result" class="result"></div>
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="content-column">
+        <div id="context-section" class="context-section">
+          <h3 id="context-title">EMI Calculator - EMI</h3>
+          <p id="context-description"></p>
+          <h4>Tips</h4>
+          <ul id="context-tips"></ul>
+          <h4>Context</h4>
+          <p id="context-context"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 QuickFinCalc - Premium Financial Calculators for India. For informational purposes only.</p>
+    <p>
+      <a href="https://twitter.com/yourusername" target="_blank">Twitter</a> |
+      <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+    </p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Calculator and Context Script -->
+  <script>
+    // Content for EMI calculator dropdown options
+    const calculatorContent = {
+      emi: {
+        emi: {
+          title: "EMI Calculator - EMI",
+          description: "The EMI option calculates your monthly Equated Monthly Installment for a loan, factoring in the loan amount, annual interest rate, and tenure in months. This helps you plan your monthly budget effectively, ensuring you can manage loan repayments alongside other expenses without financial strain.",
+          tips: [
+            "Opt for a tenure that keeps your EMI below 40% of your monthly income to maintain financial flexibility—e.g., for a ₹50,000 income, aim for an EMI under ₹20,000.",
+            "Compare interest rates across banks—SBI offers 8.5% for home loans in 2025, while private banks like HDFC may charge 8.75-9%.",
+            "Consider prepayments to reduce interest—paying an extra ₹5,000 monthly on a ₹5 lakh loan at 8.5% for 5 years can save you over ₹50,000 in interest.",
+            "Factor in processing fees (0.5-2% of loan amount) and other charges when budgeting; for a ₹5 lakh loan, this could add ₹2,500-₹10,000 upfront.",
+            "Check for rate fluctuations—RBI’s repo rate is 6.25% in May 2025; if it rises, floating rate loans may increase your EMI, so plan a buffer."
+          ],
+          context: "In India in May 2025, loan interest rates for personal loans range from 10-14%, while home loans are around 8.5-9.5%. For a ₹5,00,000 loan at 8.5% for 60 months, your EMI would be ₹10,250. This option is ideal for planning major purchases like a home (avg. cost ₹50-80 lakh in metro cities) or a car (₹10-15 lakh), helping you manage monthly outflows amidst rising inflation (4.5-5.5%)."
+        },
+        'loan-amount': {
+          title: "EMI Calculator - Loan Amount",
+          description: "The Loan Amount option calculates the maximum loan you can borrow based on the EMI you can afford, the annual interest rate, and the tenure in months. This helps you determine a realistic borrowing limit, ensuring your loan aligns with your repayment capacity and financial goals.",
+          tips: [
+            "Set an EMI you can comfortably pay—e.g., if your monthly surplus is ₹15,000 after expenses, target an EMI around ₹12,000 to leave a buffer.",
+            "Choose a longer tenure to increase your loan eligibility; extending from 5 to 7 years on a ₹10,000 EMI at 8.5% raises your loan amount from ₹4.9 lakh to ₹5.8 lakh.",
+            "Account for your credit score—scores above 750 get better rates (e.g., 8.5% vs. 9.5% for sub-700 scores in 2025), increasing your borrowing capacity.",
+            "Include co-applicants like a spouse to boost eligibility—banks often combine incomes, potentially increasing your loan amount by 20-30%.",
+            "Plan for additional costs—stamp duty (5-7% for home loans) and insurance (1-2% of loan) can add ₹50,000-₹1 lakh to a ₹10 lakh loan."
+          ],
+          context: "In 2025, with home loan rates at 8.5-9.5%, if you can afford a ₹20,000 EMI for 240 months at 8.5%, you can borrow around ₹19.8 lakh. This option is useful for planning big-ticket purchases like a home (e.g., a 2BHK in Tier-2 cities costs ₹40-60 lakh) or education (MBA fees at ₹15-25 lakh), ensuring you borrow within your means amidst rising interest rates."
+        },
+        tenure: {
+          title: "EMI Calculator - Tenure (Months)",
+          description: "The Tenure (Months) option calculates the loan repayment period needed to pay off a loan based on the loan amount, annual interest rate, and EMI you can afford. This helps you balance monthly affordability with total interest cost, optimizing your loan repayment strategy.",
+          tips: [
+            "Choose a tenure that aligns with your financial goals—e.g., a 5-year tenure for a car loan (₹5-10 lakh) vs. 20 years for a home loan (₹50 lakh).",
+            "Shorter tenures save interest but increase EMI—on a ₹5 lakh loan at 8.5%, a 3-year tenure costs ₹48,000 less in interest than a 5-year tenure.",
+            "Consider your age—banks prefer home loan tenures ending before you turn 60-65; in 2025, a 40-year-old can opt for a 20-25 year tenure.",
+            "Use step-up EMI options if your income will rise—banks like ICICI offer plans where EMI increases over time, reducing initial burden.",
+            "Monitor interest rate trends—RBI’s repo rate at 6.25% in 2025 may rise by year-end, affecting floating rate loans; a shorter tenure minimizes rate hike risks."
+          ],
+          context: "In India in 2025, with loan rates at 8.5-14%, if you borrow ₹5,00,000 at 8.5% and can pay ₹15,000 monthly, your tenure would be around 40 months. This option helps plan loans for immediate needs like a wedding (avg. cost ₹20-30 lakh in metro cities) or medical expenses (₹5-10 lakh), ensuring you clear the debt within a manageable timeframe."
+        },
+        interest: {
+          title: "EMI Calculator - Interest Rate (%)",
+          description: "The Interest Rate (%) option calculates the annual interest rate required for a loan to match a specific EMI, loan amount, and tenure in months. This helps you evaluate loan offers and negotiate better rates, ensuring your loan fits your financial plan with minimal cost.",
+          tips: [
+            "Negotiate rates—banks like Axis offer 8.5% for home loans in 2025, but you might secure 8.3% with a credit score above 800.",
+            "Opt for fixed rates if you expect rate hikes—RBI’s repo rate (6.25% in May 2025) may rise to 6.5% by year-end, increasing floating rate EMIs.",
+            "Check eligibility for subsidies—Pradhan Mantri Awas Yojana in 2025 offers interest subsidies (3-6.5%) for home loans up to ₹12 lakh for EWS/LIG.",
+            "Compare total interest—on a ₹5 lakh loan for 5 years, 8.5% costs ₹1.32 lakh in interest, while 9.5% costs ₹1.48 lakh, a ₹16,000 difference.",
+            "Look for festive offers—banks like HDFC reduce rates by 0.25% during Diwali 2025, saving you ₹10,000-₹20,000 on a ₹10 lakh loan."
+          ],
+          context: "In May 2025, if you borrow ₹5,00,000 for 60 months and want an EMI of ₹10,000, you’d need an interest rate of around 7.8%. This option is useful for comparing loan offers, especially for high-value loans like home loans (avg. ₹50 lakh in metro cities) or personal loans for emergencies (₹5-10 lakh), ensuring you secure the best rate amidst fluctuating economic conditions."
+        }
+      }
+    };
+
+    // Function to update the context section based on dropdown
+    function updateContext() {
+      const calcType = document.querySelector(`#emi-calc-type`).value;
+      const content = calculatorContent['emi'][calcType];
+
+      document.getElementById('context-title').textContent = content.title;
+      document.getElementById('context-description').textContent = content.description;
+
+      const tipsList = document.getElementById('context-tips');
+      tipsList.innerHTML = '';
+      content.tips.forEach(tip => {
+        const li = document.createElement('li');
+        li.textContent = tip;
+        tipsList.appendChild(li);
+      });
+
+      document.getElementById('context-context').textContent = content.context;
+    }
+
+    // Function to show/hide input fields based on calculation type
+    function updateInputFields() {
+      const calcType = document.querySelector(`#emi-calc-type`).value;
+
+      // Reset all inputs to hidden
+      document.querySelectorAll(`#emi-inputs .input-group`).forEach(input => {
+        input.style.display = 'none';
+      });
+
+      // Show relevant inputs based on calculation type
+      if (calcType === 'emi') {
+        document.querySelector('.emi-loan-amount-input').style.display = 'block';
+        document.querySelector('.emi-interest-input').style.display = 'block';
+        document.querySelector('.emi-tenure-input').style.display = 'block';
+      } else if (calcType === 'tenure') {
+        document.querySelector('.emi-loan-amount-input').style.display = 'block';
+        document.querySelector('.emi-interest-input').style.display = 'block';
+        document.querySelector('.emi-emi-input').style.display = 'block';
+      } else if (calcType === 'interest') {
+        document.querySelector('.emi-loan-amount-input').style.display = 'block';
+        document.querySelector('.emi-tenure-input').style.display = 'block';
+        document.querySelector('.emi-emi-input').style.display = 'block';
+      } else if (calcType === 'loan-amount') {
+        document.querySelector('.emi-emi-input').style.display = 'block';
+        document.querySelector('.emi-interest-input').style.display = 'block';
+        document.querySelector('.emi-tenure-input').style.display = 'block';
+      }
+    }
+
+    // Calculator Functions
+    function calculateEMI() {
+      const calcType = document.getElementById('emi-calc-type').value;
+      const loanAmount = parseFloat(document.getElementById('emi-loan-amount').value);
+      const interest = parseFloat(document.getElementById('emi-interest').value) / 100;
+      const tenure = parseFloat(document.getElementById('emi-tenure').value);
+      const emi = parseFloat(document.getElementById('emi-emi').value);
+      let result = '';
+
+      if (calcType === 'emi') {
+        if (isNaN(loanAmount) || isNaN(interest) || isNaN(tenure)) {
+          result = 'Please fill in all fields (Loan Amount, Interest Rate, Tenure).';
+        } else {
+          const monthlyRate = interest / 12;
+          const denominator = Math.pow(1 + monthlyRate, tenure) - 1;
+          const emiCalc = loanAmount * monthlyRate * (Math.pow(1 + monthlyRate, tenure) / denominator);
+          result = `EMI: ₹${emiCalc.toFixed(2)}`;
+        }
+      } else if (calcType === 'loan-amount') {
+        if (isNaN(emi) || isNaN(interest) || isNaN(tenure)) {
+          result = 'Please fill in all fields (EMI, Interest Rate, Tenure).';
+        } else {
+          const monthlyRate = interest / 12;
+          const denominator = Math.pow(1 + monthlyRate, tenure) - 1;
+          const loanCalc = emi / (monthlyRate * (Math.pow(1 + monthlyRate, tenure) / denominator));
+          result = `Loan Amount: ₹${loanCalc.toFixed(2)}`;
+        }
+      } else if (calcType === 'tenure') {
+        if (isNaN(loanAmount) || isNaN(interest) || isNaN(emi)) {
+          result = 'Please fill in all fields (Loan Amount, Interest Rate, EMI).';
+        } else {
+          const monthlyRate = interest / 12;
+          const tenureCalc = Math.log(emi / (emi - loanAmount * monthlyRate)) / Math.log(1 + monthlyRate);
+          const years = Math.floor(tenureCalc / 12);
+          const months = Math.round(tenureCalc % 12);
+          result = `Tenure: ${years} years and ${months} months`;
+        }
+      } else if (calcType === 'interest') {
+        if (isNaN(loanAmount) || isNaN(emi) || isNaN(tenure)) {
+          result = 'Please fill in all fields (Loan Amount, EMI, Tenure).';
+        } else {
+          let lowRate = 0;
+          let highRate = 50;
+          let annualRate = 0;
+          for (let i = 0; i < 100; i++) {
+            annualRate = (lowRate + highRate) / 2;
+            const monthlyRate = annualRate / 100 / 12;
+            const denominator = Math.pow(1 + monthlyRate, tenure) - 1;
+            const emiCalc = loanAmount * monthlyRate * (Math.pow(1 + monthlyRate, tenure) / denominator);
+            if (Math.abs(emiCalc - emi) < 0.01) break;
+            if (emiCalc < emi) {
+              lowRate = annualRate;
+            } else {
+              highRate = annualRate;
+            }
+          }
+          result = `Annual Interest Rate: ${annualRate.toFixed(2)}%`;
+        }
+      }
+      document.getElementById('emi-result').textContent = result;
+    }
+
+    // Event listeners for dropdown changes
+    document.querySelectorAll('.form-select').forEach(select => {
+      select.addEventListener('change', () => {
+        updateContext();
+        updateInputFields();
+      });
+    });
+
+    // Initialize context and input fields on page load
+    updateContext();
+    updateInputFields();
+
+    // Highlight the current page in the navigation menu
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href').split('/').pop();
+        if (linkPath === currentPath) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
